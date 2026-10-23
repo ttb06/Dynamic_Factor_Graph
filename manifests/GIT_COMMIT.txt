@@ -1,0 +1,7 @@
+commit 5ecdb3356261aea72716cc9a779f31d7ad083bf4
+Author:     Juntong Shi <shisteve@usc.edu>
+AuthorDate: Mon Jun 2 16:13:00 2025 -0700
+Commit:     Juntong Shi <shisteve@usc.edu>
+CommitDate: Mon Jun 2 16:13:00 2025 -0700
+
+    Fix data splitting bug when processing the Diabetes dataset for DCR evaluation

@@ -1,0 +1,55 @@
+diff --git a/tabdiff/main.py b/tabdiff/main.py
+index 262665d..fe0ca2d 100644
+--- a/tabdiff/main.py
++++ b/tabdiff/main.py
+@@ -115,6 +115,7 @@ def main(args):
+     
+     ## Set debug mode parameters
+     if args.debug:  # fast eval for DEBUG mode
++        raw_config['train']['main']['steps'] = 4
+         raw_config['train']['main']['check_val_every'] = 2
+         raw_config['diffusion_params']['num_timesteps'] = 4
+         raw_config['train']['main']['batch_size'] = 4096
+@@ -297,4 +298,4 @@ if __name__ == '__main__':
+     if args.gpu != -1 and torch.cuda.is_available():
+         args.device = f'cuda:{args.gpu}'
+     else:
+-        args.device = 'cpu'
+\ No newline at end of file
++        args.device = 'cpu'
+diff --git a/tabdiff/trainer.py b/tabdiff/trainer.py
+index 81b2552..786ba0c 100644
+--- a/tabdiff/trainer.py
++++ b/tabdiff/trainer.py
+@@ -435,12 +435,18 @@ class Trainer:
+         
+         # Plot density figures
+         if plot_density:
+-            img = self.metrics.plot_density(syn_df_loaded)
+-            path = os.path.join(save_path, "density_plots.png")
+-            img.save(path)
+-            print(
+-                f"The density plots are saved at {path}"
+-            )
++            try:
++                img = self.metrics.plot_density(syn_df_loaded)
++                path = os.path.join(save_path, "density_plots.png")
++                img.save(path)
++                print(
++                    f"The density plots are saved at {path}"
++                )
++            except RuntimeError as exc:
++                # Plotly/Kaleido requires a system Chrome binary in recent
++                # releases. Plotting is diagnostic only; metrics and samples
++                # have already been saved, so headless cluster runs continue.
++                print(f"Skipping optional density plot: {exc}")
+         return out_metrics, extras, syn_df
+         
+ 
+@@ -632,4 +638,4 @@ def recover_data(syn_num, syn_cat, syn_target, info):
+             else:
+                 syn_df[i] = syn_target[:, idx_mapping[i] - len(num_col_idx) - len(cat_col_idx)]
+ 
+-    return syn_df
+\ No newline at end of file
++    return syn_df

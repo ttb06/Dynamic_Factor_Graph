@@ -1,0 +1,10 @@
+method,shape_error_percent,trend_error_percent,alpha_precision_percent,beta_recall_percent,detection_score,mle_auc,dcr_percent_50_ideal,source
+CTGAN,21.15,13.08,76.97,31.80,0.7488,0.875,,TabDiff ICLR 2025
+TVAE,24.51,18.67,58.19,19.78,0.2962,0.871,,TabDiff ICLR 2025
+GOGGLE,22.33,23.90,86.95,9.79,0.1418,0.658,,TabDiff ICLR 2025
+GReaT,14.51,45.16,78.88,44.90,0.4285,0.902,,TabDiff ICLR 2025
+STaSy,9.37,8.49,89.65,37.24,0.5482,0.914,51.53,TabDiff ICLR 2025
+CoDi,31.84,17.78,94.95,20.82,0.2784,0.865,51.06,TabDiff ICLR 2025
+TabDDPM,2.72,6.61,88.55,47.79,0.8349,0.918,63.23,TabDiff ICLR 2025
+TabSyn,1.01,2.13,98.36,49.10,0.9662,0.914,52.90,TabDiff ICLR 2025 reproduction
+TabDiff,1.28,1.74,99.11,49.75,0.9843,0.921,50.24,TabDiff ICLR 2025

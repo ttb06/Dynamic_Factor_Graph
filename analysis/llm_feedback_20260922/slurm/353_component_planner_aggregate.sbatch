@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+#SBATCH --job-name=llmtd-component-agg
+#SBATCH --partition=prioritized
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=12G
+#SBATCH --time=00:30:00
+#SBATCH --output=/home/cs.aau.dk/tungkvt/binhtt2/baseline_repos/tabdiff/analysis/llm_feedback_20260922/logs/%x_%j.out
+#SBATCH --error=/home/cs.aau.dk/tungkvt/binhtt2/baseline_repos/tabdiff/analysis/llm_feedback_20260922/logs/%x_%j.err
+set -euo pipefail
+
+REPO=/home/cs.aau.dk/tungkvt/binhtt2/baseline_repos/tabdiff
+A="$REPO/analysis/llm_feedback_20260922"
+PY=/home/cs.aau.dk/tungkvt/miniforge3/bin/python
+: "${PARENT_JOB_ID:?PARENT_JOB_ID is required}"
+
+"$PY" "$A/scripts/aggregate_component_planner.py" \
+  --root "$A/outputs" --job-id "$PARENT_JOB_ID" \
+  --control "$A/outputs/e2e_t4_confirm_pretrained_s2_a4_1062365_1" \
+  --output "$A/outputs/component_planner_aggregate_${SLURM_JOB_ID}"

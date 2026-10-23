@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "status": "draft_research_handoff",
+  "concept": "one_graph_three_stages",
+  "dynamic_definition": "row_timestep_state_dependent_constraint_activation_not_per_step_topology_discovery",
+  "stages": {
+    "1_construct": {
+      "question": "Which relations are valid, applicable, and permitted?",
+      "scripts": [
+        "meaningful_typed_constraint_discovery.py",
+        "qualify_typed_graph.py",
+        "curate_typed_actuation_graph.py",
+        "compiler_typecheck_property_audit.py",
+        "compiler_counterexample_audit.py"
+      ]
+    },
+    "2_guide": {
+      "question": "Which constraint should act for this row now?",
+      "scripts": [
+        "typed_dynamic_graph_guidance.py",
+        "dense_numeric_factor_messages.py",
+        "dense_numeric_factor_messages_arr.py",
+        "categorical_logit_guidance.py",
+        "dynamic_graph_logit_messages.py",
+        "applicability_gate_trajectory.py"
+      ]
+    },
+    "3_repair": {
+      "question": "Which graph-defined groups remain missing in the selected set?",
+      "scripts": [
+        "balanced_particle_resampling.py",
+        "graph_consistent_particle_resampling.py",
+        "graph_pareto_anchored_resampling.py",
+        "graph_proximal_swap_repair.py",
+        "audit_graph_consistency.py"
+      ]
+    },
+    "4_evaluate": {
+      "question": "Did validity improve without sacrificing external quality?",
+      "scripts": [
+        "evaluate_shoppers_baseline_suite.py",
+        "paired_claim_audit.py",
+        "posthoc_independent_audit.py",
+        "rare_support_statistical_audit.py"
+      ]
+    }
+  },
+  "claim_status_file": "docs/NOVELTY_CLAIMS.md",
+  "evidence_map": "docs/EXPERIMENT_AND_EVIDENCE_MAP.md"
+}
