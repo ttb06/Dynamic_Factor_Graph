@@ -1,0 +1,22 @@
+# Versions used for the final sampling, selection, and evaluation runs (Python 3.11).
+torch==2.5.1
+numpy==2.4.6
+pandas==2.3.3
+scipy==1.17.1
+scikit-learn==1.9.0
+joblib==1.6.0
+sdmetrics==0.31.0
+xgboost==2.1.4
+tqdm==4.70.0
+xlrd==2.0.2
+openpyxl==3.1.5
+# Additional dependencies of the upstream TabDiff trainer.
+tomli==2.5.0
+tomli-w==1.2.0
+category-encoders==2.11.1
+icecream==2.2.0
+prdc==0.2
+rdt==1.22.0
+wandb==0.30.0
+plotly==7.0.0
+pillow==12.3.0

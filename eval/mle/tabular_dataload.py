@@ -108,4 +108,3 @@ def get_dataset(FLAGS, evaluation=False):
 
 
     return train, train_con_data, train_dis_data, test, (transformer_con, transformer_dis, cols[1]), con_idx, dis_idx
-        

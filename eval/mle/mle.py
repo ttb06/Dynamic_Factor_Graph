@@ -778,4 +778,3 @@ def compute_scores(train, test, synthesized_data, metadata, eval):
         return a.mean(axis=0), a.std(axis=0), a[['name','param']]
     else:
         return a.mean(axis=0), a.std(axis=0)
-

@@ -1,0 +1,999 @@
+[
+  {
+    "description": "IF job == 'admin.' AND month == 'apr' THEN default == 'no'",
+    "applicability": [
+      {
+        "left_column": "job",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "admin.",
+        "tolerance": 0.0
+      },
+      {
+        "left_column": "month",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "apr",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "default",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "no",
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.9593908629441624,
+    "candidate_id": "bscg_000",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 591,
+      "violations": 24,
+      "violation_rate": 0.04060913705583756,
+      "confidence": 0.9593908629441624,
+      "base_rate": 0.7919285656478459,
+      "lift": 1.2114613673006254,
+      "coverage": 0.015943240983031643,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 591,
+      "violations": 24,
+      "violation_rate": 0.04060913705583756,
+      "confidence": 0.9593908629441624,
+      "base_rate": 0.7919285656478459,
+      "lift": 1.2114613673006254,
+      "coverage": 0.015943240983031643,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 591,
+      "violations": 24,
+      "violation_rate": 0.04060913705583756,
+      "confidence": 0.9593908629441624,
+      "base_rate": 0.7919285656478459,
+      "lift": 1.2114613673006254,
+      "coverage": 0.015943240983031643,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "conjunctive"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 1.5618250765226314,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.03916173480538841,
+      "rate_std": 0.008590348106020086,
+      "rate_q05": 0.028112976590358572,
+      "rate_q95": 0.05112896210873147,
+      "support_q05": 559,
+      "lift_mean": 1.212555420805213,
+      "stability_probability": 1.0
+    },
+    "edge_order": 2,
+    "conditional_synergy": 0.08505817022581952,
+    "parent_candidates": [
+      "cand_00002",
+      "cand_01113"
+    ]
+  },
+  {
+    "description": "IF poutcome == 'failure' THEN previous >= 1.0",
+    "applicability": [
+      {
+        "left_column": "poutcome",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "failure",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "previous",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 1.0,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 1.0,
+    "candidate_id": "bscg_001",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 3856,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.1373384768944401,
+      "lift": 7.281280691416225,
+      "coverage": 0.10402222881653134,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 3856,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.1373384768944401,
+      "lift": 7.281280691416225,
+      "coverage": 0.10402222881653134,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 3856,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.1373384768944401,
+      "lift": 7.281280691416225,
+      "coverage": 0.10402222881653134,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 7.123552576912857,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.0,
+      "rate_std": 0.0,
+      "rate_q05": 0.0,
+      "rate_q95": 0.0,
+      "support_q05": 3749,
+      "lift_mean": 7.269670893076963,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF month == 'aug' THEN cons.conf.idx >= -36.1",
+    "applicability": [
+      {
+        "left_column": "month",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "aug",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "cons.conf.idx",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": -36.1,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.9618705035971223,
+    "candidate_id": "bscg_002",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 5560,
+      "violations": 212,
+      "violation_rate": 0.038129496402877695,
+      "confidence": 0.9618705035971223,
+      "base_rate": 0.18956540505543715,
+      "lift": 5.0740824957793835,
+      "coverage": 0.149990558148318,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 5560,
+      "violations": 212,
+      "violation_rate": 0.038129496402877695,
+      "confidence": 0.9618705035971223,
+      "base_rate": 0.18956540505543715,
+      "lift": 5.0740824957793835,
+      "coverage": 0.149990558148318,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 5560,
+      "violations": 212,
+      "violation_rate": 0.038129496402877695,
+      "confidence": 0.9618705035971223,
+      "base_rate": 0.18956540505543715,
+      "lift": 5.0740824957793835,
+      "coverage": 0.149990558148318,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 6.569614943680178,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.03839927499936892,
+      "rate_std": 0.002751568726485482,
+      "rate_q05": 0.033169791015858686,
+      "rate_q95": 0.04300508525506788,
+      "support_q05": 5458,
+      "lift_mean": 5.080444702404703,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF poutcome == 'success' THEN pdays <= 13.0",
+    "applicability": [
+      {
+        "left_column": "poutcome",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "success",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "pdays",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 13.0,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.9643724696356275,
+    "candidate_id": "bscg_003",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 1235,
+      "violations": 44,
+      "violation_rate": 0.03562753036437247,
+      "confidence": 0.9643724696356275,
+      "base_rate": 0.034826944347028516,
+      "lift": 27.69041291783352,
+      "coverage": 0.03331624807790876,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1235,
+      "violations": 44,
+      "violation_rate": 0.03562753036437247,
+      "confidence": 0.9643724696356275,
+      "base_rate": 0.034826944347028516,
+      "lift": 27.69041291783352,
+      "coverage": 0.03331624807790876,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 1235,
+      "violations": 44,
+      "violation_rate": 0.03562753036437247,
+      "confidence": 0.9643724696356275,
+      "base_rate": 0.034826944347028516,
+      "lift": 27.69041291783352,
+      "coverage": 0.03331624807790876,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 6.470045811491318,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.03519884043667646,
+      "rate_std": 0.00457429952815455,
+      "rate_q05": 0.028288343630295372,
+      "rate_q95": 0.04142459505173281,
+      "support_q05": 1173,
+      "lift_mean": 27.823322325550812,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF month == 'sep' THEN nr.employed <= 5017.5",
+    "applicability": [
+      {
+        "left_column": "month",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "sep",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "nr.employed",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 5017.5,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 1.0,
+    "candidate_id": "bscg_004",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 519,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.0764520219050959,
+      "lift": 13.080098800282288,
+      "coverage": 0.014000917208449109,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 519,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.0764520219050959,
+      "lift": 13.080098800282288,
+      "coverage": 0.014000917208449109,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 519,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.0764520219050959,
+      "lift": 13.080098800282288,
+      "coverage": 0.014000917208449109,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 5.775710954282185,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.0,
+      "rate_std": 0.0,
+      "rate_q05": 0.0,
+      "rate_q95": 0.0,
+      "support_q05": 481,
+      "lift_mean": 13.101202338324118,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF month == 'apr' THEN emp.var.rate <= -1.8",
+    "applicability": [
+      {
+        "left_column": "month",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "apr",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "emp.var.rate",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": -1.8,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 1.0,
+    "candidate_id": "bscg_005",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 2386,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.29353368043378564,
+      "lift": 3.4067640841834392,
+      "coverage": 0.0643664517521379,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 2386,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.29353368043378564,
+      "lift": 3.4067640841834392,
+      "coverage": 0.0643664517521379,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 2386,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.29353368043378564,
+      "lift": 3.4067640841834392,
+      "coverage": 0.0643664517521379,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 5.494748531078835,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.0,
+      "rate_std": 0.0,
+      "rate_q05": 0.0,
+      "rate_q95": 0.0,
+      "support_q05": 2325,
+      "lift_mean": 3.4126836010594244,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF poutcome == 'success' THEN previous >= 1.0",
+    "applicability": [
+      {
+        "left_column": "poutcome",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "success",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "previous",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 1.0,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 1.0,
+    "candidate_id": "bscg_006",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 1235,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.1373384768944401,
+      "lift": 7.281280691416225,
+      "coverage": 0.03331624807790876,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1235,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.1373384768944401,
+      "lift": 7.281280691416225,
+      "coverage": 0.03331624807790876,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 1235,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.1373384768944401,
+      "lift": 7.281280691416225,
+      "coverage": 0.03331624807790876,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 6.141835723448918,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.0,
+      "rate_std": 0.0,
+      "rate_q05": 0.0,
+      "rate_q95": 0.0,
+      "support_q05": 1173,
+      "lift_mean": 7.287575714881003,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF job == 'retired' THEN age >= 47.150000000000006",
+    "applicability": [
+      {
+        "left_column": "job",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "retired",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "age",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 47.150000000000006,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.9494818652849741,
+    "candidate_id": "bscg_007",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 1544,
+      "violations": 78,
+      "violation_rate": 0.050518134715025906,
+      "confidence": 0.9494818652849741,
+      "base_rate": 0.23958024225093744,
+      "lift": 3.96310587369088,
+      "coverage": 0.04165205427715881,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1544,
+      "violations": 78,
+      "violation_rate": 0.050518134715025906,
+      "confidence": 0.9494818652849741,
+      "base_rate": 0.23958024225093744,
+      "lift": 3.96310587369088,
+      "coverage": 0.04165205427715881,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 1544,
+      "violations": 78,
+      "violation_rate": 0.050518134715025906,
+      "confidence": 0.9494818652849741,
+      "base_rate": 0.23958024225093744,
+      "lift": 3.96310587369088,
+      "coverage": 0.04165205427715881,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 5.084141274606573,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.049751726793155815,
+      "rate_std": 0.005055311508455211,
+      "rate_q05": 0.04162044360082955,
+      "rate_q95": 0.05735188312165039,
+      "support_q05": 1484,
+      "lift_mean": 3.9633549704121562,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF poutcome == 'success' THEN euribor3m <= 1.365",
+    "applicability": [
+      {
+        "left_column": "poutcome",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "success",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "euribor3m",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 1.365,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.9538461538461538,
+    "candidate_id": "bscg_008",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 1235,
+      "violations": 57,
+      "violation_rate": 0.046153846153846156,
+      "confidence": 0.9538461538461539,
+      "base_rate": 0.2688499824651326,
+      "lift": 3.547875082974421,
+      "coverage": 0.03331624807790876,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1235,
+      "violations": 57,
+      "violation_rate": 0.046153846153846156,
+      "confidence": 0.9538461538461539,
+      "base_rate": 0.2688499824651326,
+      "lift": 3.547875082974421,
+      "coverage": 0.03331624807790876,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 1235,
+      "violations": 57,
+      "violation_rate": 0.046153846153846156,
+      "confidence": 0.9538461538461539,
+      "base_rate": 0.2688499824651326,
+      "lift": 3.547875082974421,
+      "coverage": 0.03331624807790876,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 4.737280512012116,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.044623753713759165,
+      "rate_std": 0.00589547700642817,
+      "rate_q05": 0.03510229034951688,
+      "rate_q95": 0.052180524452792025,
+      "support_q05": 1195,
+      "lift_mean": 3.558145694469652,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF month == 'nov' THEN cons.price.idx <= 93.2",
+    "applicability": [
+      {
+        "left_column": "month",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "nov",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "cons.price.idx",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 93.2,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.9692349578001633,
+    "candidate_id": "bscg_009",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 3673,
+      "violations": 113,
+      "violation_rate": 0.030765042199836647,
+      "confidence": 0.9692349578001633,
+      "base_rate": 0.3652108230596995,
+      "lift": 2.6539053516541773,
+      "coverage": 0.09908548922280072,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 3673,
+      "violations": 113,
+      "violation_rate": 0.030765042199836647,
+      "confidence": 0.9692349578001633,
+      "base_rate": 0.3652108230596995,
+      "lift": 2.6539053516541773,
+      "coverage": 0.09908548922280072,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 3673,
+      "violations": 113,
+      "violation_rate": 0.030765042199836647,
+      "confidence": 0.9692349578001633,
+      "base_rate": 0.3652108230596995,
+      "lift": 2.6539053516541773,
+      "coverage": 0.09908548922280072,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 4.894434761059537,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.031198673933683974,
+      "rate_std": 0.0026160841671727356,
+      "rate_q05": 0.027595628415300548,
+      "rate_q95": 0.035343729486590196,
+      "support_q05": 3571,
+      "lift_mean": 2.645723882963418,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF job == 'student' THEN marital == 'single'",
+    "applicability": [
+      {
+        "left_column": "job",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "student",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "marital",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "single",
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.9411027568922306,
+    "candidate_id": "bscg_010",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 798,
+      "violations": 47,
+      "violation_rate": 0.05889724310776942,
+      "confidence": 0.9411027568922306,
+      "base_rate": 0.28158299387628477,
+      "lift": 3.342186060091789,
+      "coverage": 0.021527421834956432,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 798,
+      "violations": 47,
+      "violation_rate": 0.05889724310776942,
+      "confidence": 0.9411027568922306,
+      "base_rate": 0.28158299387628477,
+      "lift": 3.342186060091789,
+      "coverage": 0.021527421834956432,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 798,
+      "violations": 47,
+      "violation_rate": 0.05889724310776942,
+      "confidence": 0.9411027568922306,
+      "base_rate": 0.28158299387628477,
+      "lift": 3.342186060091789,
+      "coverage": 0.021527421834956432,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 4.231129852345849,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.05578796285593009,
+      "rate_std": 0.00835137568080051,
+      "rate_q05": 0.04452593607607475,
+      "rate_q95": 0.06906460363709435,
+      "support_q05": 750,
+      "lift_mean": 3.354034896622597,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF poutcome == 'failure' THEN euribor3m <= 4.153",
+    "applicability": [
+      {
+        "left_column": "poutcome",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "failure",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "euribor3m",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 4.153,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.9693983402489627,
+    "candidate_id": "bscg_011",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 3856,
+      "violations": 118,
+      "violation_rate": 0.030601659751037343,
+      "confidence": 0.9693983402489627,
+      "base_rate": 0.3994982330248995,
+      "lift": 2.4265397443911674,
+      "coverage": 0.10402222881653134,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 3856,
+      "violations": 118,
+      "violation_rate": 0.030601659751037343,
+      "confidence": 0.9693983402489627,
+      "base_rate": 0.3994982330248995,
+      "lift": 2.4265397443911674,
+      "coverage": 0.10402222881653134,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 3856,
+      "violations": 118,
+      "violation_rate": 0.030601659751037343,
+      "confidence": 0.9693983402489627,
+      "base_rate": 0.3994982330248995,
+      "lift": 2.4265397443911674,
+      "coverage": 0.10402222881653134,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 4.650238484601461,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.03057483107973851,
+      "rate_std": 0.0023996301559331495,
+      "rate_q05": 0.0257983853194553,
+      "rate_q95": 0.03372251302823528,
+      "support_q05": 3760,
+      "lift_mean": 2.4236961692133105,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  }
+]

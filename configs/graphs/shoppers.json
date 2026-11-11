@@ -1,0 +1,2445 @@
+[
+  {
+    "description": "For Informational_Duration > 0, Informational must be positive",
+    "applicability": [
+      {
+        "left_column": "Informational_Duration",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Informational",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Nonzero time can't be logged for zero page count.",
+    "directionality_reason": "Duration process requires pages to exist.",
+    "plausible_counterexample": "Mismeasured time due to session glitches.",
+    "confidence": 1.0,
+    "candidate_id": "r1_014",
+    "source": "multi_role_critic",
+    "proposal_role": "actionable_structure",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 1.0,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Formally valid as a hard edge (no counterexamples in observed data), and semantically defensible barring pathological measurement errors.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Informational_Duration\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Informational\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1290,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.21252628416942024,
+      "lift": 4.705300353356891,
+      "coverage": 0.19375187744067288,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 430,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.21045515998197387,
+      "lift": 4.751605995717345,
+      "coverage": 0.19378098242451555,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_hard",
+    "judge_confidence": 0.99,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "This is a standard sibling count-duration consistency rule: positive informational duration implies at least one informational page. The direction is correct and the hard scope is justified semantically, aside from rare logging corruption.",
+    "calibration": {
+      "support": 443,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.218018018018018,
+      "lift": 4.586776859504132,
+      "coverage": 0.19954954954954954,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "heldout": {
+      "support": 242,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.21492295214922952,
+      "lift": 4.652830188679245,
+      "coverage": 0.19626926196269262,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0
+  },
+  {
+    "description": "If Informational_Duration >= 70.65, Informational must be positive. If violated, set Informational > 0 or reduce Informational_Duration.",
+    "applicability": [
+      {
+        "left_column": "Informational_Duration",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 70.65,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Informational",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Perfect empirical support within data, natural process logic supports.",
+    "directionality_reason": "High duration cannot exist absent at least 1 page.",
+    "plausible_counterexample": "Only extreme measurement error could violate.",
+    "confidence": 0.99,
+    "candidate_id": "r2_010",
+    "source": "multi_role_critic",
+    "proposal_role": "actionable_structure",
+    "proposal_round": 2,
+    "critic_decision": "keep",
+    "critic_confidence": 1.0,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Rule is hard and empirically flawless in dataset. Should be included for synthesis.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Informational_Duration\", \"operator\": \">=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 70.65, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Informational\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 666,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.21252628416942024,
+      "lift": 4.705300353356891,
+      "coverage": 0.10003003905076599,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 216,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.21045515998197387,
+      "lift": 4.751605995717345,
+      "coverage": 0.09734114465975664,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_hard",
+    "judge_confidence": 0.98,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "This is a straightforward process/count consistency rule: substantial positive informational duration cannot occur unless at least one informational page was visited. The thresholded version is conservative, but the semantic core is solid and effectively hard apart from measurement error.",
+    "calibration": {
+      "support": 223,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.218018018018018,
+      "lift": 4.586776859504132,
+      "coverage": 0.10045045045045045,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "heldout": {
+      "support": 135,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.21492295214922952,
+      "lift": 4.652830188679245,
+      "coverage": 0.10948905109489052,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "semantically valid but not selected by calibration-trajectory actionability portfolio",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "Zero Informational page count implies zero Informational_Duration",
+    "applicability": [
+      {
+        "left_column": "Informational",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Informational_Duration",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "hard",
+    "evidence_basis": "schema_semantics",
+    "rationale": "pre-registered interpretable hypothesis",
+    "directionality_reason": "derived from the documented measurement/process direction",
+    "plausible_counterexample": "measurement noise, delayed updates, or a legitimate exceptional process state",
+    "confidence": 0.65,
+    "candidate_id": "seed_001",
+    "source": "multi_role_critic",
+    "proposal_role": "predefined_seed",
+    "proposal_round": 0,
+    "critic_decision": "keep",
+    "critic_confidence": 0.65,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Semantically and directionally strong. High base rate and zero violations support hardness, but universality should not be claimed given possible noise or late pipeline updates. No vacuity, sensitivity, or spuriousness.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Informational\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Informational_Duration\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 5243,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.8062481225593271,
+      "lift": 1.2403129657228018,
+      "coverage": 0.7874737158305798,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1752,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.8062190175754844,
+      "lift": 1.2403577417551706,
+      "coverage": 0.7895448400180262,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_hard",
+    "judge_confidence": 0.96,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "If no informational pages were viewed, informational duration should be zero under ordinary process semantics. This is a clean count-to-duration consistency rule with correct directionality.",
+    "calibration": {
+      "support": 1736,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.8004504504504505,
+      "lift": 1.249296567248171,
+      "coverage": 0.781981981981982,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "heldout": {
+      "support": 968,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.8037307380373074,
+      "lift": 1.2441977800201816,
+      "coverage": 0.7850770478507705,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "semantically valid but not selected by calibration-trajectory actionability portfolio",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "Zero Administrative page count implies zero Administrative_Duration",
+    "applicability": [
+      {
+        "left_column": "Administrative",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Administrative_Duration",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "hard",
+    "evidence_basis": "schema_semantics",
+    "rationale": "pre-registered interpretable hypothesis",
+    "directionality_reason": "derived from the documented measurement/process direction",
+    "plausible_counterexample": "measurement noise, delayed updates, or a legitimate exceptional process state",
+    "confidence": 0.65,
+    "candidate_id": "seed_000",
+    "source": "multi_role_critic",
+    "proposal_role": "predefined_seed",
+    "proposal_round": 0,
+    "critic_decision": "keep",
+    "critic_confidence": 0.65,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "This constraint is sound in directionality and semantics. The quantitative support is strong with zero observed violations, but absolute universality should not be inferred. Rare process bugs may create counterexamples; however, no sensitivity or vacuity risks are present.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Administrative\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Administrative_Duration\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 3149,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.4819765695404025,
+      "lift": 2.0747896540978497,
+      "coverage": 0.4729648543106038,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1015,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.47138350608382157,
+      "lift": 2.121414913957935,
+      "coverage": 0.45741324921135645,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_hard",
+    "judge_confidence": 0.96,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Administrative page duration is a process-dependent measure of administrative page visits; if the count is exactly zero, a zero duration requirement is semantically appropriate. Direction is correct and the constraint is not merely tautological.",
+    "calibration": {
+      "support": 1049,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.48423423423423423,
+      "lift": 2.0651162790697675,
+      "coverage": 0.4725225225225225,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "heldout": {
+      "support": 555,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.46472019464720193,
+      "lift": 2.1518324607329844,
+      "coverage": 0.45012165450121655,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "semantically valid but not selected by calibration-trajectory actionability portfolio",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "If Administrative_Duration is positive but Administrative is zero, repair by setting either Administrative > 0 or Administrative_Duration = 0.",
+    "applicability": [
+      {
+        "left_column": "Administrative_Duration",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Administrative",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Impossible to have positive duration on non-existent page count; any nonzero duration should imply a corresponding count.",
+    "directionality_reason": "Either field may be corrected; symmetric process ambiguity.",
+    "plausible_counterexample": "Mis-tracking or categorization errors; extremely rare.",
+    "confidence": 1.0,
+    "candidate_id": "r1_020",
+    "source": "multi_role_critic",
+    "proposal_role": "trajectory_ambiguity",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 1.0,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "No observed violations. Definitionally plausible at both schema and process level. It is robust as a hard data repair constraint.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Administrative_Duration\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Administrative\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 3449,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.5270351456893962,
+      "lift": 1.8974066685665432,
+      "coverage": 0.5180234304595974,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1173,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.5425867507886435,
+      "lift": 1.8430232558139537,
+      "coverage": 0.5286164939161785,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_hard",
+    "judge_confidence": 0.95,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Positive administrative duration without any administrative page count is semantically inconsistent for standard session-feature construction. The implication from positive duration to positive count is well-scoped and directionally correct.",
+    "calibration": {
+      "support": 1145,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.5274774774774775,
+      "lift": 1.8958155422715626,
+      "coverage": 0.5157657657657657,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "heldout": {
+      "support": 660,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.5498783454987834,
+      "lift": 1.8185840707964602,
+      "coverage": 0.5352798053527981,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "semantically valid but not selected by calibration-trajectory actionability portfolio",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "BounceRates should not exceed ExitRates",
+    "applicability": [],
+    "requirements": [
+      {
+        "left_column": "BounceRates",
+        "operator": "<=",
+        "right_kind": "column",
+        "right_column": "ExitRates",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "domain",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "schema_semantics",
+    "rationale": "pre-registered interpretable hypothesis",
+    "directionality_reason": "derived from the documented measurement/process direction",
+    "plausible_counterexample": "measurement noise, delayed updates, or a legitimate exceptional process state",
+    "confidence": 0.65,
+    "candidate_id": "seed_003",
+    "source": "multi_role_critic",
+    "proposal_role": "predefined_seed",
+    "proposal_round": 0,
+    "critic_decision": "keep",
+    "critic_confidence": 0.97,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Direction and semantics are nearly tautological at the feature level, but this is not strictly universal (about 1.3% violations). Column-to-column comparison avoids tautology. No sensitivity issue.",
+    "canonical": "{\"applicability\": [], \"exceptions\": [], \"requirements\": [{\"left_column\": \"BounceRates\", \"operator\": \"<=\", \"right_column\": \"ExitRates\", \"right_kind\": \"column\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 6658,
+      "violations": 87,
+      "violation_rate": 0.01306698708320817,
+      "confidence": 0.9869330129167918,
+      "base_rate": 0.9869330129167918,
+      "lift": 1.0,
+      "coverage": 1.0,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 2219,
+      "violations": 30,
+      "violation_rate": 0.013519603424966201,
+      "confidence": 0.9864803965750338,
+      "base_rate": 0.9864803965750338,
+      "lift": 1.0,
+      "coverage": 1.0,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.95,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Semantically sound column relation: bounce rate should not exceed exit rate under standard web analytics definitions. The observed small violation rate is compatible with noise or implementation artifacts, so near-hard rather than hard is appropriate.",
+    "calibration": {
+      "support": 2220,
+      "violations": 39,
+      "violation_rate": 0.01756756756756757,
+      "confidence": 0.9824324324324324,
+      "base_rate": 0.9824324324324324,
+      "lift": 1.0,
+      "coverage": 1.0,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 1233,
+      "violations": 19,
+      "violation_rate": 0.015409570154095702,
+      "confidence": 0.9845904298459043,
+      "base_rate": 0.9845904298459043,
+      "lift": 1.0,
+      "coverage": 1.0,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.002157997413471866,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0
+  },
+  {
+    "description": "If Administrative is at least 2, Administrative_Duration should be positive; otherwise repair by setting Administrative_Duration above zero or lowering Administrative below 2.",
+    "applicability": [
+      {
+        "left_column": "Administrative",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 2,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Administrative_Duration",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "external_domain",
+    "rationale": "Strong process consistency; violation typically means error or extreme navigation speed. Data shows rare violation.",
+    "directionality_reason": "Multi-admin-page state firmly implies required time.",
+    "plausible_counterexample": "Rushed interaction or timer granularity, rare.",
+    "confidence": 0.86,
+    "candidate_id": "r2_007",
+    "source": "multi_role_critic",
+    "proposal_role": "stateful_process",
+    "proposal_round": 2,
+    "critic_decision": "keep",
+    "critic_confidence": 0.9,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Consistent with behavior and data; an enforceable 'almost hard' rule for synthesis.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Administrative\", \"operator\": \">=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 2, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Administrative_Duration\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 2833,
+      "violations": 4,
+      "violation_rate": 0.0014119308153900459,
+      "confidence": 0.99858806918461,
+      "base_rate": 0.5180234304595974,
+      "lift": 1.9276890010528078,
+      "coverage": 0.4255031541003304,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 924,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.5286164939161785,
+      "lift": 1.8917306052855924,
+      "coverage": 0.416403785488959,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.94,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Semantically sound: having at least two administrative page visits should ordinarily imply some positive administrative duration. This is a plausible process consistency constraint, with only rare conceivable violations from timing granularity or logging artifacts. Near-hard is appropriate rather than absolute hard.",
+    "calibration": {
+      "support": 931,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.5157657657657657,
+      "lift": 1.9388646288209608,
+      "coverage": 0.41936936936936936,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 520,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.5352798053527981,
+      "lift": 1.8681818181818182,
+      "coverage": 0.42173560421735606,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "semantically valid but not selected by calibration-trajectory actionability portfolio",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "If ProductRelated is at least 2, ProductRelated_Duration should be positive; otherwise repair by setting ProductRelated_Duration above zero or lowering ProductRelated below 2.",
+    "applicability": [
+      {
+        "left_column": "ProductRelated",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 2,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "ProductRelated_Duration",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "external_domain",
+    "rationale": "Multiple product page views with zero time is hard to justify. Near-zero-violation and plausible directionality.",
+    "directionality_reason": "Multi-page state is a strong precondition for required duration.",
+    "plausible_counterexample": "Very fast navigation, timing error possible but rare.",
+    "confidence": 0.88,
+    "candidate_id": "r2_006",
+    "source": "multi_role_critic",
+    "proposal_role": "stateful_process",
+    "proposal_round": 2,
+    "critic_decision": "keep",
+    "critic_confidence": 0.9,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Constraint is well-scoped and matches process logic; empirical exceptions are rare and plausible. Keep as written.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"ProductRelated\", \"operator\": \">=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 2, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"ProductRelated_Duration\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 6277,
+      "violations": 88,
+      "violation_rate": 0.014019436036323085,
+      "confidence": 0.985980563963677,
+      "base_rate": 0.935265845599279,
+      "lift": 1.0542249228954812,
+      "coverage": 0.942775608290778,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 2125,
+      "violations": 31,
+      "violation_rate": 0.014588235294117647,
+      "confidence": 0.9854117647058823,
+      "base_rate": 0.9481748535376295,
+      "lift": 1.0392721986132856,
+      "coverage": 0.9576385759351059,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.94,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Multiple product-related page views should ordinarily entail positive product-related duration. This is a well-scoped count-to-duration process relation with plausible but uncommon measurement exceptions, so near-hard acceptance is appropriate.",
+    "calibration": {
+      "support": 2097,
+      "violations": 26,
+      "violation_rate": 0.01239866475917978,
+      "confidence": 0.9876013352408202,
+      "base_rate": 0.9387387387387387,
+      "lift": 1.0520513264081675,
+      "coverage": 0.9445945945945946,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 1171,
+      "violations": 19,
+      "violation_rate": 0.016225448334756618,
+      "confidence": 0.9837745516652434,
+      "base_rate": 0.9407948094079481,
+      "lift": 1.0456845018993493,
+      "coverage": 0.9497161394971614,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.003826783575576838,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0
+  },
+  {
+    "description": "Administrative_Duration == 0 implies Administrative == 0",
+    "applicability": [
+      {
+        "left_column": "Administrative_Duration",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Administrative",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Administration duration means time spent on corresponding pages; zero means none visited (usually).",
+    "directionality_reason": "Duration nonzero only if count is nonzero.",
+    "plausible_counterexample": "Time lost to log error for a nonzero page count.",
+    "confidence": 0.98,
+    "candidate_id": "r1_015",
+    "source": "multi_role_critic",
+    "proposal_role": "actionable_structure",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.95,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Directionality is valid and plausible. Small number of violations is likely from logging errors. Accept as near-hard for generative modeling.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Administrative_Duration\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Administrative\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 3209,
+      "violations": 60,
+      "violation_rate": 0.01869741352446245,
+      "confidence": 0.9813025864755376,
+      "base_rate": 0.4729648543106038,
+      "lift": 2.0747896540978497,
+      "coverage": 0.4819765695404025,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1046,
+      "violations": 31,
+      "violation_rate": 0.029636711281070746,
+      "confidence": 0.9703632887189293,
+      "base_rate": 0.45741324921135645,
+      "lift": 2.1214149139579352,
+      "coverage": 0.47138350608382157,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.93,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Zero administrative duration usually implies no administrative pages were visited. The direction is semantically sensible, but not fully hard because zero duration with nonzero count can arise from coarse timing, truncation, or logging artifacts. Near-hard is the right level.",
+    "calibration": {
+      "support": 1075,
+      "violations": 26,
+      "violation_rate": 0.024186046511627906,
+      "confidence": 0.9758139534883721,
+      "base_rate": 0.4725225225225225,
+      "lift": 2.0651162790697675,
+      "coverage": 0.48423423423423423,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 573,
+      "violations": 18,
+      "violation_rate": 0.031413612565445025,
+      "confidence": 0.9685863874345549,
+      "base_rate": 0.45012165450121655,
+      "lift": 2.1518324607329844,
+      "coverage": 0.46472019464720193,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.007227566053817119,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0
+  },
+  {
+    "description": "Positive PageValues should only occur when there was nonzero ProductRelated_Duration.",
+    "applicability": [
+      {
+        "left_column": "PageValues",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "ProductRelated_Duration",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "external_domain",
+    "rationale": "A positive page-value signal suggests meaningful engagement with commerce-relevant content, which normally entails some positive time spent on product-related pages. A violation admits multiple repairs: lower PageValues, raise ProductRelated_Duration, or if counts are already present, align timing upward.",
+    "directionality_reason": "Once value becomes positive, the row should evolve toward a compatible engagement state with positive product-related dwell time.",
+    "plausible_counterexample": "If PageValues is computed from instantaneous events such as add-to-cart without measurable dwell time, the relation may fail.",
+    "confidence": 0.82,
+    "candidate_id": "r1_005",
+    "source": "multi_role_critic",
+    "proposal_role": "stateful_process",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.8,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Good process relation and direction. Semantics hold if ProductRelated_Duration measures what is intended. No observed violations, so either data or instrumentation is consistent. Admit users should ensure no valuable instantaneous events are excluded from ProductRelated_Duration.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PageValues\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"ProductRelated_Duration\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1519,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.935265845599279,
+      "lift": 1.0692147101332905,
+      "coverage": 0.22814659056773806,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 468,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.9481748535376295,
+      "lift": 1.054657794676806,
+      "coverage": 0.21090581342947273,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.9,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Reasonable process relation. Positive PageValues, described as page value before completing a transaction, normally presupposes some nonzero engagement on product-related content, hence positive ProductRelated_Duration. This is semantically coherent and directionally appropriate, with only limited plausible instrumentation-based exceptions.",
+    "calibration": {
+      "support": 468,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.9387387387387387,
+      "lift": 1.0652591170825336,
+      "coverage": 0.21081081081081082,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 275,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.9407948094079481,
+      "lift": 1.0629310344827585,
+      "coverage": 0.22303325223033252,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0
+  },
+  {
+    "description": "If Informational >= 2 then Informational_Duration must be strictly positive; violation may be fixed by increasing duration or lowering count.",
+    "applicability": [
+      {
+        "left_column": "Informational",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 2,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Informational_Duration",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Feasibility constraint\u2014spending time on at least 2 informational pages must register a positive duration unless logging is faulty.",
+    "directionality_reason": "Either variable may be adjusted; ambiguity resolved in repair/generation.",
+    "plausible_counterexample": "Very rare tracker or click error.",
+    "confidence": 0.99,
+    "candidate_id": "r1_021",
+    "source": "multi_role_critic",
+    "proposal_role": "trajectory_ambiguity",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.99,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Extremely low violation rate and high plausible link between count and duration for page visits. High support and domain-reasonable. Keep as near-hard.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Informational\", \"operator\": \">=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 2, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Informational_Duration\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 856,
+      "violations": 7,
+      "violation_rate": 0.008177570093457943,
+      "confidence": 0.991822429906542,
+      "base_rate": 0.19375187744067288,
+      "lift": 5.11903390567268,
+      "coverage": 0.128567137278462,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 279,
+      "violations": 1,
+      "violation_rate": 0.0035842293906810036,
+      "confidence": 0.996415770609319,
+      "base_rate": 0.19378098242451555,
+      "lift": 5.141968825539718,
+      "coverage": 0.12573231185218567,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.86,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Requiring positive informational duration once at least two informational pages are counted is semantically stronger and more defensible than the >0 count version, because multiple pageviews make true zero elapsed time less plausible. Small residual violations can reasonably be attributed to measurement artifacts, so near-hard is appropriate.",
+    "calibration": {
+      "support": 292,
+      "violations": 1,
+      "violation_rate": 0.003424657534246575,
+      "confidence": 0.9965753424657534,
+      "base_rate": 0.19954954954954954,
+      "lift": 4.994124741024769,
+      "coverage": 0.13153153153153152,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 163,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.19626926196269262,
+      "lift": 5.095041322314049,
+      "coverage": 0.1321978913219789,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.003424657534246575,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0
+  },
+  {
+    "description": "Nonzero Administrative implies Administrative_Duration > 0",
+    "applicability": [
+      {
+        "left_column": "Administrative",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Administrative_Duration",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Some time must be logged if any Administrative page is visited.",
+    "directionality_reason": "Page count enables possibility of time spent.",
+    "plausible_counterexample": "Instantaneous visits (possible, but rare).",
+    "confidence": 0.99,
+    "candidate_id": "r1_013",
+    "source": "multi_role_critic",
+    "proposal_role": "actionable_structure",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.96,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Directionality and semantics match domain intuition. No reasonable exception found in schema context.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Administrative\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Administrative_Duration\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 3509,
+      "violations": 60,
+      "violation_rate": 0.017098888572242805,
+      "confidence": 0.9829011114277572,
+      "base_rate": 0.5180234304595974,
+      "lift": 1.8974066685665434,
+      "coverage": 0.5270351456893962,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1204,
+      "violations": 31,
+      "violation_rate": 0.02574750830564784,
+      "confidence": 0.9742524916943521,
+      "base_rate": 0.5286164939161785,
+      "lift": 1.8430232558139534,
+      "coverage": 0.5425867507886435,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.86,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "unsupported_hardness"
+    ],
+    "judge_rationale": "This is a plausible process relation: if administrative pages were visited, administrative duration is usually positive. But zero duration with positive count can occur via logging granularity, instantaneous visits, or rounding, and the data show nontrivial violations. So the semantics support a near-hard edge, not a hard one.",
+    "calibration": {
+      "support": 1171,
+      "violations": 26,
+      "violation_rate": 0.02220324508966695,
+      "confidence": 0.977796754910333,
+      "base_rate": 0.5157657657657657,
+      "lift": 1.8958155422715628,
+      "coverage": 0.5274774774774775,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 678,
+      "violations": 18,
+      "violation_rate": 0.02654867256637168,
+      "confidence": 0.9734513274336283,
+      "base_rate": 0.5352798053527981,
+      "lift": 1.81858407079646,
+      "coverage": 0.5498783454987834,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.00434542747670473,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0
+  },
+  {
+    "description": "IF Informational_Duration >= 70.65 THEN Informational > 0",
+    "applicability": [
+      {
+        "left_column": "Informational_Duration",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 70.65000000000009,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Informational",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_003",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Informational_Duration\", \"operator\": \">=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 70.65000000000009, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Informational\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 666,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.21252628416942024,
+      "lift": 4.705300353356891,
+      "coverage": 0.10003003905076599,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 216,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.21045515998197387,
+      "lift": 4.751605995717345,
+      "coverage": 0.09734114465975664,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 223,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.218018018018018,
+      "lift": 4.586776859504132,
+      "coverage": 0.10045045045045045,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "heldout": {
+      "support": 135,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.21492295214922952,
+      "lift": 4.652830188679245,
+      "coverage": 0.10948905109489052,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "IF TrafficType == 13 THEN Browser == 2",
+    "applicability": [
+      {
+        "left_column": "TrafficType",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "13",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Browser",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_026",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"TrafficType\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"13\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Browser\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 415,
+      "violations": 10,
+      "violation_rate": 0.024096385542168676,
+      "confidence": 0.9759036144578314,
+      "base_rate": 0.650345449083809,
+      "lift": 1.5005926709146054,
+      "coverage": 0.062331030339441276,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 121,
+      "violations": 2,
+      "violation_rate": 0.01652892561983471,
+      "confidence": 0.9834710743801653,
+      "base_rate": 0.629562866155926,
+      "lift": 1.5621491152824531,
+      "coverage": 0.05452906714736368,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 131,
+      "violations": 2,
+      "violation_rate": 0.015267175572519083,
+      "confidence": 0.9847328244274809,
+      "base_rate": 0.6382882882882883,
+      "lift": 1.542771256336632,
+      "coverage": 0.05900900900900901,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 71,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.6626115166261152,
+      "lift": 1.5091799265605874,
+      "coverage": 0.0575831305758313,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.015267175572519083,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "IF Administrative_Duration == 0 THEN Administrative <= 0",
+    "applicability": [
+      {
+        "left_column": "Administrative_Duration",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Administrative",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_013",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Administrative_Duration\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Administrative\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 3209,
+      "violations": 60,
+      "violation_rate": 0.01869741352446245,
+      "confidence": 0.9813025864755376,
+      "base_rate": 0.4729648543106038,
+      "lift": 2.0747896540978497,
+      "coverage": 0.4819765695404025,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1046,
+      "violations": 31,
+      "violation_rate": 0.029636711281070746,
+      "confidence": 0.9703632887189293,
+      "base_rate": 0.45741324921135645,
+      "lift": 2.1214149139579352,
+      "coverage": 0.47138350608382157,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 1075,
+      "violations": 26,
+      "violation_rate": 0.024186046511627906,
+      "confidence": 0.9758139534883721,
+      "base_rate": 0.4725225225225225,
+      "lift": 2.0651162790697675,
+      "coverage": 0.48423423423423423,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 573,
+      "violations": 18,
+      "violation_rate": 0.031413612565445025,
+      "confidence": 0.9685863874345549,
+      "base_rate": 0.45012165450121655,
+      "lift": 2.1518324607329844,
+      "coverage": 0.46472019464720193,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.007227566053817119,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "IF BounceRates > 0 THEN VisitorType == Returning_Visitor",
+    "applicability": [
+      {
+        "left_column": "BounceRates",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "VisitorType",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "Returning_Visitor",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_025",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BounceRates\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"VisitorType\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"Returning_Visitor\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 3698,
+      "violations": 133,
+      "violation_rate": 0.03596538669551109,
+      "confidence": 0.9640346133044889,
+      "base_rate": 0.8558125563232202,
+      "lift": 1.1264553273747433,
+      "coverage": 0.5554220486632623,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1202,
+      "violations": 48,
+      "violation_rate": 0.03993344425956739,
+      "confidence": 0.9600665557404326,
+      "base_rate": 0.8562415502478594,
+      "lift": 1.121256677467379,
+      "coverage": 0.5416854438936458,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 1221,
+      "violations": 45,
+      "violation_rate": 0.036855036855036855,
+      "confidence": 0.9631449631449631,
+      "base_rate": 0.8536036036036037,
+      "lift": 1.1283281362437034,
+      "coverage": 0.55,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 691,
+      "violations": 24,
+      "violation_rate": 0.03473227206946455,
+      "confidence": 0.9652677279305355,
+      "base_rate": 0.8580697485806975,
+      "lift": 1.1249292141194236,
+      "coverage": 0.5604217356042174,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.002122764785572308,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "IF OperatingSystems == 3 THEN Browser == 2",
+    "applicability": [
+      {
+        "left_column": "OperatingSystems",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "3",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Browser",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_018",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"OperatingSystems\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"3\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Browser\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1379,
+      "violations": 82,
+      "violation_rate": 0.05946337926033358,
+      "confidence": 0.9405366207396664,
+      "base_rate": 0.650345449083809,
+      "lift": 1.4462108131373437,
+      "coverage": 0.207119255031541,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 446,
+      "violations": 24,
+      "violation_rate": 0.053811659192825115,
+      "confidence": 0.9461883408071748,
+      "base_rate": 0.629562866155926,
+      "lift": 1.502929082499013,
+      "coverage": 0.20099143758449753,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 463,
+      "violations": 18,
+      "violation_rate": 0.038876889848812095,
+      "confidence": 0.9611231101511879,
+      "base_rate": 0.6382882882882883,
+      "lift": 1.5057821485784313,
+      "coverage": 0.20855855855855857,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 267,
+      "violations": 15,
+      "violation_rate": 0.056179775280898875,
+      "confidence": 0.9438202247191011,
+      "base_rate": 0.6626115166261152,
+      "lift": 1.4243945374279703,
+      "coverage": 0.21654501216545013,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.01730288543208678,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "IF SpecialDay > 0 THEN Month == May",
+    "applicability": [
+      {
+        "left_column": "SpecialDay",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Month",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "May",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_007",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"SpecialDay\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Month\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"May\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 686,
+      "violations": 42,
+      "violation_rate": 0.061224489795918366,
+      "confidence": 0.9387755102040817,
+      "base_rate": 0.27050165214779215,
+      "lift": 3.4704982492719463,
+      "coverage": 0.10303394412736558,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 229,
+      "violations": 18,
+      "violation_rate": 0.07860262008733625,
+      "confidence": 0.9213973799126638,
+      "base_rate": 0.27219468228931953,
+      "lift": 3.385067526533445,
+      "coverage": 0.103199639477242,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 204,
+      "violations": 10,
+      "violation_rate": 0.049019607843137254,
+      "confidence": 0.9509803921568627,
+      "base_rate": 0.27207207207207207,
+      "lift": 3.495325282430853,
+      "coverage": 0.0918918918918919,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 132,
+      "violations": 9,
+      "violation_rate": 0.06818181818181818,
+      "confidence": 0.9318181818181818,
+      "base_rate": 0.28791565287915655,
+      "lift": 3.2364276568501915,
+      "coverage": 0.1070559610705596,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.019162210338680923,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "IF Administrative == 0 THEN Informational_Duration == 0",
+    "applicability": [
+      {
+        "left_column": "Administrative",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Informational_Duration",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_028",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Administrative\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Informational_Duration\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 3149,
+      "violations": 218,
+      "violation_rate": 0.06922832645284217,
+      "confidence": 0.9307716735471578,
+      "base_rate": 0.8062481225593271,
+      "lift": 1.1544481748280508,
+      "coverage": 0.4729648543106038,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 1015,
+      "violations": 66,
+      "violation_rate": 0.06502463054187192,
+      "confidence": 0.9349753694581281,
+      "base_rate": 0.8062190175754844,
+      "lift": 1.15970393785779,
+      "coverage": 0.45741324921135645,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 1049,
+      "violations": 73,
+      "violation_rate": 0.06959008579599618,
+      "confidence": 0.9304099142040038,
+      "base_rate": 0.8004504504504505,
+      "lift": 1.1623579119487273,
+      "coverage": 0.4725225225225225,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 555,
+      "violations": 38,
+      "violation_rate": 0.06846846846846846,
+      "confidence": 0.9315315315315316,
+      "base_rate": 0.8037307380373074,
+      "lift": 1.1590094635503314,
+      "coverage": 0.45012165450121655,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0011216173275277186,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0
+  },
+  {
+    "description": "Nonzero Informational page count implies positive Informational_Duration",
+    "applicability": [
+      {
+        "left_column": "Informational",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Informational_Duration",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [
+      {
+        "all_of": [
+          {
+            "left_column": "Informational",
+            "operator": "==",
+            "right_kind": "literal",
+            "right_column": "",
+            "right_value": 0,
+            "tolerance": 0
+          }
+        ],
+        "reason": "No informational pages viewed, no duration expected."
+      }
+    ],
+    "relation_family": "process",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "It's expected that users must spend some time if they visit any Informational pages.",
+    "directionality_reason": "Duration is process-dependent on count; not symmetric.",
+    "plausible_counterexample": "Interrupted session with logging failure: count > 0 but duration still 0.",
+    "confidence": 0.91,
+    "candidate_id": "r1_009",
+    "source": "multi_role_critic",
+    "proposal_role": "actionable_structure",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.96,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "This directionality is correct and covers the plausible causal relationship. Exception set is sound, and empirical rate supports a near-hard edge. Counterexamples are rare and handled.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Informational\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [{\"all_of\": [{\"left_column\": \"Informational\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}], \"requirements\": [{\"left_column\": \"Informational_Duration\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1415,
+      "violations": 125,
+      "violation_rate": 0.08833922261484099,
+      "confidence": 0.911660777385159,
+      "base_rate": 0.19375187744067288,
+      "lift": 4.705300353356891,
+      "coverage": 0.21252628416942024,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 467,
+      "violations": 37,
+      "violation_rate": 0.07922912205567452,
+      "confidence": 0.9207708779443254,
+      "base_rate": 0.19378098242451555,
+      "lift": 4.751605995717345,
+      "coverage": 0.21045515998197387,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_soft",
+    "judge_confidence": 0.71,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "unsupported_hardness"
+    ],
+    "judge_rationale": "More informational page views generally imply some positive informational duration, so the direction is sensible. But nearly 9% violations indicate zero duration can occur from logging granularity, truncation, or measurement artifacts, so this is not near-hard semantically; it is a softer process regularity.",
+    "calibration": {
+      "support": 484,
+      "violations": 41,
+      "violation_rate": 0.08471074380165289,
+      "confidence": 0.9152892561983471,
+      "base_rate": 0.19954954954954954,
+      "lift": 4.586776859504132,
+      "coverage": 0.218018018018018,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 265,
+      "violations": 23,
+      "violation_rate": 0.08679245283018867,
+      "confidence": 0.9132075471698113,
+      "base_rate": 0.19626926196269262,
+      "lift": 4.652830188679245,
+      "coverage": 0.21492295214922952,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.002081709028535786,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0
+  },
+  {
+    "description": "IF Browser == 1 THEN OperatingSystems == 1",
+    "applicability": [
+      {
+        "left_column": "Browser",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "1",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "OperatingSystems",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "1",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_005",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Browser\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"1\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"OperatingSystems\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"1\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1301,
+      "violations": 162,
+      "violation_rate": 0.1245196003074558,
+      "confidence": 0.8754803996925442,
+      "base_rate": 0.20681886452388104,
+      "lift": 4.233078069101641,
+      "coverage": 0.19540402523280265,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 460,
+      "violations": 54,
+      "violation_rate": 0.11739130434782609,
+      "confidence": 0.8826086956521739,
+      "base_rate": 0.21901757548445244,
+      "lift": 4.029853283234926,
+      "coverage": 0.20730058584948174,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 465,
+      "violations": 67,
+      "violation_rate": 0.14408602150537633,
+      "confidence": 0.8559139784946237,
+      "base_rate": 0.2126126126126126,
+      "lift": 4.025697102241662,
+      "coverage": 0.20945945945945946,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 236,
+      "violations": 26,
+      "violation_rate": 0.11016949152542373,
+      "confidence": 0.8898305084745762,
+      "base_rate": 0.20275750202757503,
+      "lift": 4.388644067796609,
+      "coverage": 0.19140308191403083,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.033916529979952606,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0
+  },
+  {
+    "description": "IF OperatingSystems == 1 THEN Browser == 1",
+    "applicability": [
+      {
+        "left_column": "OperatingSystems",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "1",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Browser",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "1",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_006",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"OperatingSystems\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"1\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Browser\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"1\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1377,
+      "violations": 238,
+      "violation_rate": 0.1728395061728395,
+      "confidence": 0.8271604938271605,
+      "base_rate": 0.19540402523280265,
+      "lift": 4.233078069101641,
+      "coverage": 0.20681886452388104,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 486,
+      "violations": 80,
+      "violation_rate": 0.1646090534979424,
+      "confidence": 0.8353909465020576,
+      "base_rate": 0.20730058584948174,
+      "lift": 4.029853283234925,
+      "coverage": 0.21901757548445244,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 472,
+      "violations": 74,
+      "violation_rate": 0.15677966101694915,
+      "confidence": 0.8432203389830508,
+      "base_rate": 0.20945945945945946,
+      "lift": 4.025697102241662,
+      "coverage": 0.2126126126126126,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 250,
+      "violations": 40,
+      "violation_rate": 0.16,
+      "confidence": 0.84,
+      "base_rate": 0.19140308191403083,
+      "lift": 4.388644067796609,
+      "coverage": 0.20275750202757503,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.003220338983050852,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0
+  },
+  {
+    "description": "Sessions with SpecialDay > 0 should very rarely be outside of May",
+    "applicability": [
+      {
+        "left_column": "SpecialDay",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Month",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "May",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [
+      {
+        "all_of": [
+          {
+            "left_column": "SpecialDay",
+            "operator": "==",
+            "right_kind": "literal",
+            "right_column": "",
+            "right_value": 0,
+            "tolerance": 0
+          }
+        ],
+        "reason": "No special day context."
+      }
+    ],
+    "relation_family": "temporal",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Sales events with SpecialDay rarely occur outside May in this data.",
+    "directionality_reason": "SpecialDay triggers calendar linkage to month.",
+    "plausible_counterexample": "Special event in another month or label error.",
+    "confidence": 0.94,
+    "candidate_id": "r1_012",
+    "source": "multi_role_critic",
+    "proposal_role": "actionable_structure",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.89,
+    "critic_issues": [
+      "dataset_specific_codebook"
+    ],
+    "critic_text": "Candidate direction is correct for the observed data. However, this edge is highly dataset-specific and should not be regarded as a universal property. Risk of codebook overfitting in other domains or future data where special days fall in other months.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"SpecialDay\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [{\"all_of\": [{\"left_column\": \"SpecialDay\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}], \"requirements\": [{\"left_column\": \"Month\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"May\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 686,
+      "violations": 42,
+      "violation_rate": 0.061224489795918366,
+      "confidence": 0.9387755102040817,
+      "base_rate": 0.27050165214779215,
+      "lift": 3.4704982492719463,
+      "coverage": 0.10303394412736558,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 229,
+      "violations": 18,
+      "violation_rate": 0.07860262008733625,
+      "confidence": 0.9213973799126638,
+      "base_rate": 0.27219468228931953,
+      "lift": 3.385067526533445,
+      "coverage": 0.103199639477242,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_soft",
+    "judge_confidence": 0.88,
+    "generalizability": "dataset_semantic",
+    "judge_issues": [
+      "dataset_specific_codebook"
+    ],
+    "judge_rationale": "This is not a domain-general truth about special days; it depends on how the dataset encodes SpecialDay and on the month distribution in this corpus. But such codebook-linked dependence is meaningful and documented by the feature definition, so it is acceptable only as a soft, dataset-semantic edge rather than a general or near-hard rule.",
+    "calibration": {
+      "support": 204,
+      "violations": 10,
+      "violation_rate": 0.049019607843137254,
+      "confidence": 0.9509803921568627,
+      "base_rate": 0.27207207207207207,
+      "lift": 3.495325282430853,
+      "coverage": 0.0918918918918919,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 132,
+      "violations": 9,
+      "violation_rate": 0.06818181818181818,
+      "confidence": 0.9318181818181818,
+      "base_rate": 0.28791565287915655,
+      "lift": 3.2364276568501915,
+      "coverage": 0.1070559610705596,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.019162210338680923,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0
+  },
+  {
+    "description": "IF VisitorType == New_Visitor THEN BounceRates == 0",
+    "applicability": [
+      {
+        "left_column": "VisitorType",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "New_Visitor",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "BounceRates",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_014",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"VisitorType\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"New_Visitor\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"BounceRates\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 917,
+      "violations": 125,
+      "violation_rate": 0.13631406761177753,
+      "confidence": 0.8636859323882224,
+      "base_rate": 0.4445779513367378,
+      "lift": 1.9427097762975625,
+      "coverage": 0.13772904776209072,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 308,
+      "violations": 47,
+      "violation_rate": 0.1525974025974026,
+      "confidence": 0.8474025974025974,
+      "base_rate": 0.4583145561063542,
+      "lift": 1.848954143201931,
+      "coverage": 0.138801261829653,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 305,
+      "violations": 38,
+      "violation_rate": 0.12459016393442623,
+      "confidence": 0.8754098360655738,
+      "base_rate": 0.45,
+      "lift": 1.9453551912568305,
+      "coverage": 0.1373873873873874,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 164,
+      "violations": 21,
+      "violation_rate": 0.12804878048780488,
+      "confidence": 0.8719512195121951,
+      "base_rate": 0.4395782643957826,
+      "lift": 1.983608586085861,
+      "coverage": 0.1330089213300892,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.003458616553378646,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0
+  },
+  {
+    "description": "IF ExitRates <= 0.007692308 THEN BounceRates == 0",
+    "applicability": [
+      {
+        "left_column": "ExitRates",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.007692308,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "BounceRates",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_016",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"ExitRates\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.007692308, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"BounceRates\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 670,
+      "violations": 82,
+      "violation_rate": 0.12238805970149254,
+      "confidence": 0.8776119402985074,
+      "base_rate": 0.4445779513367378,
+      "lift": 1.9740338846308993,
+      "coverage": 0.10063082006608591,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 238,
+      "violations": 27,
+      "violation_rate": 0.1134453781512605,
+      "confidence": 0.8865546218487395,
+      "base_rate": 0.4583145561063542,
+      "lift": 1.9343802417722251,
+      "coverage": 0.10725552050473186,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 257,
+      "violations": 37,
+      "violation_rate": 0.14396887159533073,
+      "confidence": 0.8560311284046692,
+      "base_rate": 0.45,
+      "lift": 1.9022913964548205,
+      "coverage": 0.11576576576576576,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 135,
+      "violations": 17,
+      "violation_rate": 0.1259259259259259,
+      "confidence": 0.8740740740740741,
+      "base_rate": 0.4395782643957826,
+      "lift": 1.988437884378844,
+      "coverage": 0.10948905109489052,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.018042945669404814,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0
+  },
+  {
+    "description": "IF Informational >= 2 THEN Administrative > 0",
+    "applicability": [
+      {
+        "left_column": "Informational",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 2.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Administrative",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_024",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Informational\", \"operator\": \">=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 2.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Administrative\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 856,
+      "violations": 134,
+      "violation_rate": 0.15654205607476634,
+      "confidence": 0.8434579439252337,
+      "base_rate": 0.5270351456893962,
+      "lift": 1.6003827274591638,
+      "coverage": 0.128567137278462,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 279,
+      "violations": 38,
+      "violation_rate": 0.13620071684587814,
+      "confidence": 0.8637992831541219,
+      "base_rate": 0.5425867507886435,
+      "lift": 1.592002167208469,
+      "coverage": 0.12573231185218567,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 292,
+      "violations": 41,
+      "violation_rate": 0.1404109589041096,
+      "confidence": 0.8595890410958904,
+      "base_rate": 0.5274774774774775,
+      "lift": 1.629622264075898,
+      "coverage": 0.13153153153153152,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 163,
+      "violations": 20,
+      "violation_rate": 0.12269938650306748,
+      "confidence": 0.8773006134969326,
+      "base_rate": 0.5498783454987834,
+      "lift": 1.5954449210054835,
+      "coverage": 0.1321978913219789,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.01771157240104211,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0
+  },
+  {
+    "description": "IF Informational_Duration >= 70.65 THEN Administrative > 0",
+    "applicability": [
+      {
+        "left_column": "Informational_Duration",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 70.65000000000009,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "Administrative",
+        "operator": ">",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "emp_022",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"Informational_Duration\", \"operator\": \">=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 70.65000000000009, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"Administrative\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 666,
+      "violations": 89,
+      "violation_rate": 0.13363363363363365,
+      "confidence": 0.8663663663663663,
+      "base_rate": 0.5270351456893962,
+      "lift": 1.6438493209653082,
+      "coverage": 0.10003003905076599,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 216,
+      "violations": 24,
+      "violation_rate": 0.1111111111111111,
+      "confidence": 0.8888888888888888,
+      "base_rate": 0.5425867507886435,
+      "lift": 1.6382428940568476,
+      "coverage": 0.09734114465975664,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 223,
+      "violations": 34,
+      "violation_rate": 0.15246636771300448,
+      "confidence": 0.8475336322869955,
+      "base_rate": 0.5274774774774775,
+      "lift": 1.6067674326875576,
+      "coverage": 0.10045045045045045,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 135,
+      "violations": 17,
+      "violation_rate": 0.1259259259259259,
+      "confidence": 0.8740740740740741,
+      "base_rate": 0.5498783454987834,
+      "lift": 1.5895771878072764,
+      "coverage": 0.10948905109489052,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.026540441787078567,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0
+  }
+]

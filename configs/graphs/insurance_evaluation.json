@@ -1,0 +1,671 @@
+[
+  {
+    "description": "IF sex == 'female' AND region == 'southwest' THEN smoker == 'no'",
+    "applicability": [
+      {
+        "left_column": "sex",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "female",
+        "tolerance": 0.0
+      },
+      {
+        "left_column": "region",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "southwest",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "smoker",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "no",
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.8661971830985915,
+    "candidate_id": "bscg_000",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 142,
+      "violations": 19,
+      "violation_rate": 0.13380281690140844,
+      "confidence": 0.8661971830985915,
+      "base_rate": 0.7973421926910299,
+      "lift": 1.0863556338028169,
+      "coverage": 0.11794019933554817,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 142,
+      "violations": 19,
+      "violation_rate": 0.13380281690140844,
+      "confidence": 0.8661971830985915,
+      "base_rate": 0.7973421926910299,
+      "lift": 1.0863556338028169,
+      "coverage": 0.11794019933554817,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 142,
+      "violations": 19,
+      "violation_rate": 0.13380281690140844,
+      "confidence": 0.8661971830985915,
+      "base_rate": 0.7973421926910299,
+      "lift": 1.0863556338028169,
+      "coverage": 0.11794019933554817,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "conjunctive"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 0.4701685833850552,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.13183429213200226,
+      "rate_std": 0.034657037860719095,
+      "rate_q05": 0.07222309711286089,
+      "rate_q95": 0.17916666666666667,
+      "support_q05": 121,
+      "lift_mean": 1.0860774739711023,
+      "stability_probability": 1.0
+    },
+    "edge_order": 2,
+    "conditional_synergy": 0.03705145445537539,
+    "parent_candidates": [
+      "cand_00010",
+      "cand_00061"
+    ]
+  },
+  {
+    "description": "IF smoker == 'yes' THEN charges >= 16152.1",
+    "applicability": [
+      {
+        "left_column": "smoker",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "yes",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "charges",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 16152.1,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.9467213114754098,
+    "candidate_id": "bscg_001",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 244,
+      "violations": 13,
+      "violation_rate": 0.05327868852459016,
+      "confidence": 0.9467213114754098,
+      "base_rate": 0.24916943521594684,
+      "lift": 3.7995081967213116,
+      "coverage": 0.2026578073089701,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 244,
+      "violations": 13,
+      "violation_rate": 0.05327868852459016,
+      "confidence": 0.9467213114754098,
+      "base_rate": 0.24916943521594684,
+      "lift": 3.7995081967213116,
+      "coverage": 0.2026578073089701,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 244,
+      "violations": 13,
+      "violation_rate": 0.05327868852459016,
+      "confidence": 0.9467213114754098,
+      "base_rate": 0.24916943521594684,
+      "lift": 3.7995081967213116,
+      "coverage": 0.2026578073089701,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 3.592244359334587,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.05441940547636103,
+      "rate_std": 0.013649885848193115,
+      "rate_q05": 0.03323320339371704,
+      "rate_q95": 0.07388308893046085,
+      "support_q05": 214,
+      "lift_mean": 3.859616314554867,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF smoker == 'no' THEN charges <= 20189.14999999999",
+    "applicability": [
+      {
+        "left_column": "smoker",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "no",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "charges",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 20189.14999999999,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.95,
+    "candidate_id": "bscg_002",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 960,
+      "violations": 48,
+      "violation_rate": 0.05,
+      "confidence": 0.95,
+      "base_rate": 0.8056478405315615,
+      "lift": 1.1791752577319587,
+      "coverage": 0.7973421926910299,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 960,
+      "violations": 48,
+      "violation_rate": 0.05,
+      "confidence": 0.95,
+      "base_rate": 0.8056478405315615,
+      "lift": 1.1791752577319587,
+      "coverage": 0.7973421926910299,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 960,
+      "violations": 48,
+      "violation_rate": 0.05,
+      "confidence": 0.95,
+      "base_rate": 0.8056478405315615,
+      "lift": 1.1791752577319587,
+      "coverage": 0.7973421926910299,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 0.9549965195566316,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.05022114943102284,
+      "rate_std": 0.007625246125317091,
+      "rate_q05": 0.039952284671821284,
+      "rate_q95": 0.06216016637530894,
+      "support_q05": 937,
+      "lift_mean": 1.1808194815619197,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF region == 'northwest' THEN bmi <= 37.1355",
+    "applicability": [
+      {
+        "left_column": "region",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "northwest",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "bmi",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 37.1355,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.9491525423728814,
+    "candidate_id": "bscg_003",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 295,
+      "violations": 15,
+      "violation_rate": 0.05084745762711865,
+      "confidence": 0.9491525423728814,
+      "base_rate": 0.8588039867109635,
+      "lift": 1.1052027669409565,
+      "coverage": 0.24501661129568106,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 295,
+      "violations": 15,
+      "violation_rate": 0.05084745762711865,
+      "confidence": 0.9491525423728814,
+      "base_rate": 0.8588039867109635,
+      "lift": 1.1052027669409565,
+      "coverage": 0.24501661129568106,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 295,
+      "violations": 15,
+      "violation_rate": 0.05084745762711865,
+      "confidence": 0.9491525423728814,
+      "base_rate": 0.8588039867109635,
+      "lift": 1.1052027669409565,
+      "coverage": 0.24501661129568106,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 0.4751205654833346,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.050663939953736546,
+      "rate_std": 0.0164148619297564,
+      "rate_q05": 0.029321141393296807,
+      "rate_q95": 0.07604558672596647,
+      "support_q05": 275,
+      "lift_mean": 1.1037927460767853,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF region == 'southeast' THEN bmi >= 23.21",
+    "applicability": [
+      {
+        "left_column": "region",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "southeast",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "bmi",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 23.21,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.9610778443113772,
+    "candidate_id": "bscg_004",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 334,
+      "violations": 13,
+      "violation_rate": 0.038922155688622756,
+      "confidence": 0.9610778443113772,
+      "base_rate": 0.893687707641196,
+      "lift": 1.075406807203437,
+      "coverage": 0.27740863787375414,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 334,
+      "violations": 13,
+      "violation_rate": 0.038922155688622756,
+      "confidence": 0.9610778443113772,
+      "base_rate": 0.893687707641196,
+      "lift": 1.075406807203437,
+      "coverage": 0.27740863787375414,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 334,
+      "violations": 13,
+      "violation_rate": 0.038922155688622756,
+      "confidence": 0.9610778443113772,
+      "base_rate": 0.893687707641196,
+      "lift": 1.075406807203437,
+      "coverage": 0.27740863787375414,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 0.37130323303526974,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.03840460823811196,
+      "rate_std": 0.011048553472060175,
+      "rate_q05": 0.021294876966518758,
+      "rate_q95": 0.05506560878852609,
+      "support_q05": 305,
+      "lift_mean": 1.080056796048134,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF region == 'northwest' THEN age >= 19.0",
+    "applicability": [
+      {
+        "left_column": "region",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "northwest",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "age",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 19.0,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 1.0,
+    "candidate_id": "bscg_005",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 295,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.9526578073089701,
+      "lift": 1.049694856146469,
+      "coverage": 0.24501661129568106,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 295,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.9526578073089701,
+      "lift": 1.049694856146469,
+      "coverage": 0.24501661129568106,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 295,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.9526578073089701,
+      "lift": 1.049694856146469,
+      "coverage": 0.24501661129568106,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 0.26939409376783346,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.0,
+      "rate_std": 0.0,
+      "rate_q05": 0.0,
+      "rate_q95": 0.0,
+      "support_q05": 271,
+      "lift_mean": 1.0511497387750344,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF region == 'southwest' THEN age >= 19.0",
+    "applicability": [
+      {
+        "left_column": "region",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "southwest",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "age",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 19.0,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 1.0,
+    "candidate_id": "bscg_006",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 288,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.9526578073089701,
+      "lift": 1.049694856146469,
+      "coverage": 0.23920265780730898,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 288,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.9526578073089701,
+      "lift": 1.049694856146469,
+      "coverage": 0.23920265780730898,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 288,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.9526578073089701,
+      "lift": 1.049694856146469,
+      "coverage": 0.23920265780730898,
+      "exception_rate": 0.0
+    },
+    "classification": "hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 0.2682610641382132,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.0,
+      "rate_std": 0.0,
+      "rate_q05": 0.0,
+      "rate_q95": 0.0,
+      "support_q05": 252,
+      "lift_mean": 1.05055049105621,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  },
+  {
+    "description": "IF sex == 'female' THEN charges >= 2164.0",
+    "applicability": [
+      {
+        "left_column": "sex",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "female",
+        "tolerance": 0.0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "charges",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 2164.0,
+        "tolerance": 0.0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "bootstrap-stable train-only conditional relation",
+    "directionality_reason": "conditional confidence and lift are evaluated in the stated direction",
+    "plausible_counterexample": "retained as calibrated empirical violation mass",
+    "confidence": 0.949748743718593,
+    "candidate_id": "bscg_007",
+    "source": "bootstrap_conditional_graph",
+    "discovery": {
+      "support": 597,
+      "violations": 30,
+      "violation_rate": 0.05025125628140704,
+      "confidence": 0.949748743718593,
+      "base_rate": 0.9177740863787376,
+      "lift": 1.0348393551467745,
+      "coverage": 0.4958471760797342,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 597,
+      "violations": 30,
+      "violation_rate": 0.05025125628140704,
+      "confidence": 0.949748743718593,
+      "base_rate": 0.9177740863787376,
+      "lift": 1.0348393551467745,
+      "coverage": 0.4958471760797342,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 597,
+      "violations": 30,
+      "violation_rate": 0.05025125628140704,
+      "confidence": 0.949748743718593,
+      "base_rate": 0.9177740863787376,
+      "lift": 1.0348393551467745,
+      "coverage": 0.4958471760797342,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "provenance": [
+      "train_only_empirical_mining",
+      "bootstrap_stability_selection",
+      "pairwise"
+    ],
+    "usage_role": "actuate",
+    "selection_score": 0.19532255708508556,
+    "bootstrap_uncertainty": {
+      "replicates": 32,
+      "rate_mean": 0.05008299326062456,
+      "rate_std": 0.009328483693549985,
+      "rate_q05": 0.03416408583628067,
+      "rate_q95": 0.06419619249074564,
+      "support_q05": 565,
+      "lift_mean": 1.0345797980261855,
+      "stability_probability": 1.0
+    },
+    "edge_order": 1
+  }
+]

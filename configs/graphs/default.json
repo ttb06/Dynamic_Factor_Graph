@@ -1,0 +1,2758 @@
+[
+  {
+    "description": "If the preceding statement balance was non-positive and there is no new delinquency signal in the following month, the following payment is typically zero because there was nothing contractually due.",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT2",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      },
+      {
+        "left_column": "PAY_0",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT1",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [
+      {
+        "all_of": [
+          {
+            "left_column": "PAY_AMT1",
+            "operator": ">",
+            "right_kind": "literal",
+            "right_column": "",
+            "right_value": 0,
+            "tolerance": 0
+          },
+          {
+            "left_column": "BILL_AMT1",
+            "operator": ">",
+            "right_kind": "literal",
+            "right_column": "",
+            "right_value": 0,
+            "tolerance": 0
+          }
+        ],
+        "reason": "New usage after a zero prior bill leads to payments despite prior zero balance."
+      },
+      {
+        "all_of": [
+          {
+            "left_column": "PAY_AMT1",
+            "operator": ">",
+            "right_kind": "literal",
+            "right_column": "",
+            "right_value": 0,
+            "tolerance": 0
+          },
+          {
+            "left_column": "BILL_AMT2",
+            "operator": "<",
+            "right_kind": "literal",
+            "right_column": "",
+            "right_value": 0,
+            "tolerance": 0
+          }
+        ],
+        "reason": "Refunds or reversals can cause payments on a prior credit balance."
+      }
+    ],
+    "relation_family": "accounting",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "hybrid",
+    "rationale": "The rule captures typical payment absence after no dues and no delinquency; the exceptions cover common billing/payment timing effects.",
+    "directionality_reason": "Payments follow from prior owed amounts and delinquency status downstream.",
+    "plausible_counterexample": "Immediate new charges or refunds after prior zero bill causing payments.",
+    "confidence": 0.83,
+    "candidate_id": "old::r1_001",
+    "source": "multi_role_critic",
+    "proposal_role": "process_hyperedge",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.85,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Warranted near-hard accounting process rule with solid rationale, directionality, and exception handling.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT2\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}, {\"left_column\": \"PAY_0\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [{\"all_of\": [{\"left_column\": \"BILL_AMT1\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}, {\"left_column\": \"PAY_AMT1\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}, {\"all_of\": [{\"left_column\": \"BILL_AMT2\", \"operator\": \"<\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}, {\"left_column\": \"PAY_AMT1\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}], \"requirements\": [{\"left_column\": \"PAY_AMT1\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1030,
+      "violations": 1,
+      "violation_rate": 0.000970873786407767,
+      "confidence": 0.9990291262135922,
+      "base_rate": 0.17425925925925925,
+      "lift": 5.733004550003611,
+      "coverage": 0.06358024691358025,
+      "exception_rate": 0.003580246913580247
+    },
+    "counterexample": {
+      "support": 322,
+      "violations": 2,
+      "violation_rate": 0.006211180124223602,
+      "confidence": 0.9937888198757764,
+      "base_rate": 0.17166666666666666,
+      "lift": 5.789061086655008,
+      "coverage": 0.05962962962962963,
+      "exception_rate": 0.0042592592592592595
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.9,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Well-scoped near-hard accounting/process relation. Given a nonpositive prior statement and no current delinquency signal, a zero following payment is a strong expectation because there was typically nothing due. Directionality is sound, and the listed exceptions capture the main realistic ways a positive payment can still occur.",
+    "calibration": {
+      "support": 296,
+      "violations": 2,
+      "violation_rate": 0.006756756756756757,
+      "confidence": 0.9932432432432432,
+      "base_rate": 0.18074074074074073,
+      "lift": 5.495403190075321,
+      "coverage": 0.054814814814814816,
+      "exception_rate": 0.0038888888888888888
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 183,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.17433333333333334,
+      "lift": 5.736137667304015,
+      "coverage": 0.061,
+      "exception_rate": 0.0013333333333333333
+    },
+    "heldout_shift": 0.006756756756756757,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "r1_001"
+  },
+  {
+    "description": "This candidate captures a process where severe delinquency with zero or negative billing predicts zero payment. It is semantically plausible and supported by empirical evidence with low violation rates. No exceptions undermine its validity.",
+    "applicability": [
+      {
+        "left_column": "PAY_3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": -2,
+        "tolerance": 0
+      },
+      {
+        "left_column": "BILL_AMT4",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "process",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Payment absence with delinquency and low billing aligns with expected non-curing defaulting behavior. The directionality from delinquency and billing to payment is reasonable. Violation rate is low and plausible counterexamples are rare.",
+    "directionality_reason": "Delinquency and no bill drives no payment.",
+    "plausible_counterexample": "Payment applied without billing or delayed billing adjustments.",
+    "confidence": 0.98,
+    "candidate_id": "old::r1_014",
+    "source": "multi_role_critic",
+    "proposal_role": "conditional_structure",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.95,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT4\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}, {\"left_column\": \"PAY_3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": -2, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1229,
+      "violations": 41,
+      "violation_rate": 0.03336045565500407,
+      "confidence": 0.9666395443449959,
+      "base_rate": 0.1958641975308642,
+      "lift": 4.935253898011009,
+      "coverage": 0.0758641975308642,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 395,
+      "violations": 10,
+      "violation_rate": 0.02531645569620253,
+      "confidence": 0.9746835443037974,
+      "base_rate": 0.20222222222222222,
+      "lift": 4.8198636806231745,
+      "coverage": 0.07314814814814814,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.84,
+    "generalizability": "dataset_semantic",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Semantically defensible as a dataset-specific accounting/process regularity: if historical status is -2 and the following month's bill is non-positive, a zero payment in the adjacent payment field is plausible. This aligns with the provided hypothesis that non-positive bill often means no following payment. It depends on the dataset\u2019s month indexing/codebook for PAY/BILL/PAY_AMT alignment, so dataset_semantic is the right scope rather than domain-general.",
+    "calibration": {
+      "support": 414,
+      "violations": 16,
+      "violation_rate": 0.03864734299516908,
+      "confidence": 0.961352657004831,
+      "base_rate": 0.2064814814814815,
+      "lift": 4.655878338857478,
+      "coverage": 0.07666666666666666,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 235,
+      "violations": 2,
+      "violation_rate": 0.00851063829787234,
+      "confidence": 0.9914893617021276,
+      "base_rate": 0.196,
+      "lift": 5.058619192357794,
+      "coverage": 0.07833333333333334,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.03013670469729674,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "r1_014"
+  },
+  {
+    "description": "Similar to r1_014, linking zero or negative bills and severe delinquency to zero payment is semantically sound and empirically supported. Diirectional and empirical signals are consistent with business process.",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT5",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      },
+      {
+        "left_column": "PAY_5",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": -2,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "accounting",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Zero bill and delinquency predict no payment next period, matching non-curing default patterns. Low violation and strong evidence.",
+    "directionality_reason": "Non-positive bills with delinquency imply no payments next period.",
+    "plausible_counterexample": "Occasional payments made despite delinquency and zero bills due to fees or corrections.",
+    "confidence": 0.98,
+    "candidate_id": "old::r1_015",
+    "source": "multi_role_critic",
+    "proposal_role": "conditional_structure",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.95,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT5\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}, {\"left_column\": \"PAY_5\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": -2, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1659,
+      "violations": 45,
+      "violation_rate": 0.027124773960216998,
+      "confidence": 0.972875226039783,
+      "base_rate": 0.21216049382716048,
+      "lift": 4.5855626016422715,
+      "coverage": 0.1024074074074074,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 568,
+      "violations": 23,
+      "violation_rate": 0.040492957746478875,
+      "confidence": 0.9595070422535211,
+      "base_rate": 0.21314814814814814,
+      "lift": 4.501596896758484,
+      "coverage": 0.10518518518518519,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.84,
+    "generalizability": "dataset_semantic",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Same semantic pattern as r1_014 in another month slice. Non-positive bill together with status -2 making zero payment likely is a reasonable dataset-specific temporal/accounting relation. Near-hard is supportable given the low but nonzero violation rate, and the rule relies on the dataset\u2019s month-offset semantics.",
+    "calibration": {
+      "support": 556,
+      "violations": 19,
+      "violation_rate": 0.0341726618705036,
+      "confidence": 0.9658273381294964,
+      "base_rate": 0.21185185185185185,
+      "lift": 4.558975197464406,
+      "coverage": 0.10296296296296296,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 317,
+      "violations": 7,
+      "violation_rate": 0.022082018927444796,
+      "confidence": 0.9779179810725552,
+      "base_rate": 0.22533333333333333,
+      "lift": 4.339872697067553,
+      "coverage": 0.10566666666666667,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.012090642943058803,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "r1_015"
+  },
+  {
+    "description": "This candidate logically encodes that zero billing and zero payments in one month imply zero payments in prior month, with documented exceptions where prior delinquency affects behavior. This nuanced constraint fits accounting process and empirical signals well.",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [
+      {
+        "all_of": [
+          {
+            "left_column": "PAY_3",
+            "operator": ">=",
+            "right_kind": "literal",
+            "right_column": "",
+            "right_value": 1,
+            "tolerance": 0
+          }
+        ],
+        "reason": "Prior delinquency leads to zero payment despite zero statement bill due to write-offs or policy."
+      }
+    ],
+    "relation_family": "accounting",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Zero bills usually imply zero payment except for recognized prior delinquency conditions.",
+    "directionality_reason": "Zero billing should lead to no payment, except if prior default causes payment skip legitimately.",
+    "plausible_counterexample": "Customer with previous delinquency may skip payments despite zero bill owing to penalties or restructuring.",
+    "confidence": 0.98,
+    "candidate_id": "old::r1_017",
+    "source": "multi_role_critic",
+    "proposal_role": "exception_deactivation",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.9,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [{\"all_of\": [{\"left_column\": \"PAY_3\", \"operator\": \">=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 1, \"tolerance\": 0}]}], \"requirements\": [{\"left_column\": \"PAY_AMT3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1652,
+      "violations": 26,
+      "violation_rate": 0.015738498789346248,
+      "confidence": 0.9842615012106537,
+      "base_rate": 0.1958641975308642,
+      "lift": 5.025224178888304,
+      "coverage": 0.1019753086419753,
+      "exception_rate": 0.0038888888888888888
+    },
+    "counterexample": {
+      "support": 536,
+      "violations": 5,
+      "violation_rate": 0.009328358208955223,
+      "confidence": 0.9906716417910447,
+      "base_rate": 0.20222222222222222,
+      "lift": 4.898925701164507,
+      "coverage": 0.09925925925925926,
+      "exception_rate": 0.0044444444444444444
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.77,
+    "generalizability": "dataset_semantic",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "A zero statement balance making zero payment in the aligned payment month likely is semantically plausible, and the exception for positive delinquency status is not incoherent. The wording about 'prior month' is a bit confusing, but the encoded relation itself uses documented month-indexed fields and is acceptable as a dataset-specific accounting rule rather than a universal law.",
+    "calibration": {
+      "support": 568,
+      "violations": 8,
+      "violation_rate": 0.014084507042253521,
+      "confidence": 0.9859154929577465,
+      "base_rate": 0.2064814814814815,
+      "lift": 4.774837364997158,
+      "coverage": 0.10518518518518519,
+      "exception_rate": 0.005
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 311,
+      "violations": 2,
+      "violation_rate": 0.006430868167202572,
+      "confidence": 0.9935691318327974,
+      "base_rate": 0.196,
+      "lift": 5.069230264453048,
+      "coverage": 0.10366666666666667,
+      "exception_rate": 0.004666666666666667
+    },
+    "heldout_shift": 0.007653638875050949,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "r1_017"
+  },
+  {
+    "description": "IF BILL_AMT5 == 0 THEN PAY_AMT4 == 0",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT5",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_020",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT5\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1866,
+      "violations": 35,
+      "violation_rate": 0.018756698821007504,
+      "confidence": 0.9812433011789925,
+      "base_rate": 0.21216049382716048,
+      "lift": 4.625004794617306,
+      "coverage": 0.11518518518518518,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 642,
+      "violations": 14,
+      "violation_rate": 0.021806853582554516,
+      "confidence": 0.9781931464174455,
+      "base_rate": 0.21314814814814814,
+      "lift": 4.589264110038406,
+      "coverage": 0.11888888888888889,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 638,
+      "violations": 5,
+      "violation_rate": 0.007836990595611285,
+      "confidence": 0.9921630094043887,
+      "base_rate": 0.21185185185185185,
+      "lift": 4.683286932503234,
+      "coverage": 0.11814814814814815,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 360,
+      "violations": 3,
+      "violation_rate": 0.008333333333333333,
+      "confidence": 0.9916666666666667,
+      "base_rate": 0.22533333333333333,
+      "lift": 4.400887573964497,
+      "coverage": 0.12,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0004963427377220487,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_020"
+  },
+  {
+    "description": "IF BILL_AMT5 == 0 THEN PAY_AMT4 <= 0",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT5",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT4",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_021",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT5\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT4\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1866,
+      "violations": 35,
+      "violation_rate": 0.018756698821007504,
+      "confidence": 0.9812433011789925,
+      "base_rate": 0.21216049382716048,
+      "lift": 4.625004794617306,
+      "coverage": 0.11518518518518518,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 642,
+      "violations": 14,
+      "violation_rate": 0.021806853582554516,
+      "confidence": 0.9781931464174455,
+      "base_rate": 0.21314814814814814,
+      "lift": 4.589264110038406,
+      "coverage": 0.11888888888888889,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 638,
+      "violations": 5,
+      "violation_rate": 0.007836990595611285,
+      "confidence": 0.9921630094043887,
+      "base_rate": 0.21185185185185185,
+      "lift": 4.683286932503234,
+      "coverage": 0.11814814814814815,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 360,
+      "violations": 3,
+      "violation_rate": 0.008333333333333333,
+      "confidence": 0.9916666666666667,
+      "base_rate": 0.22533333333333333,
+      "lift": 4.400887573964497,
+      "coverage": 0.12,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0004963427377220487,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_021"
+  },
+  {
+    "description": "IF BILL_AMT6 == 0 THEN PAY_AMT5 == 0",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT6",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT5",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_026",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT6\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT5\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 2169,
+      "violations": 40,
+      "violation_rate": 0.018441678192715538,
+      "confidence": 0.9815583218072844,
+      "base_rate": 0.22240740740740741,
+      "lift": 4.413334669241745,
+      "coverage": 0.1338888888888889,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 709,
+      "violations": 7,
+      "violation_rate": 0.009873060648801129,
+      "confidence": 0.9901269393511989,
+      "base_rate": 0.22444444444444445,
+      "lift": 4.411456660475639,
+      "coverage": 0.1312962962962963,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 725,
+      "violations": 10,
+      "violation_rate": 0.013793103448275862,
+      "confidence": 0.9862068965517241,
+      "base_rate": 0.22537037037037036,
+      "lift": 4.375938571388094,
+      "coverage": 0.13425925925925927,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 417,
+      "violations": 4,
+      "violation_rate": 0.009592326139088728,
+      "confidence": 0.9904076738609112,
+      "base_rate": 0.22366666666666668,
+      "lift": 4.428052193118828,
+      "coverage": 0.139,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0042007773091871335,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_026"
+  },
+  {
+    "description": "IF BILL_AMT6 == 0 THEN PAY_AMT5 <= 0",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT6",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT5",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_027",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT6\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT5\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 2169,
+      "violations": 40,
+      "violation_rate": 0.018441678192715538,
+      "confidence": 0.9815583218072844,
+      "base_rate": 0.22240740740740741,
+      "lift": 4.413334669241745,
+      "coverage": 0.1338888888888889,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 709,
+      "violations": 7,
+      "violation_rate": 0.009873060648801129,
+      "confidence": 0.9901269393511989,
+      "base_rate": 0.22444444444444445,
+      "lift": 4.411456660475639,
+      "coverage": 0.1312962962962963,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 725,
+      "violations": 10,
+      "violation_rate": 0.013793103448275862,
+      "confidence": 0.9862068965517241,
+      "base_rate": 0.22537037037037036,
+      "lift": 4.375938571388094,
+      "coverage": 0.13425925925925927,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 417,
+      "violations": 4,
+      "violation_rate": 0.009592326139088728,
+      "confidence": 0.9904076738609112,
+      "base_rate": 0.22366666666666668,
+      "lift": 4.428052193118828,
+      "coverage": 0.139,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0042007773091871335,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_027"
+  },
+  {
+    "description": "IF BILL_AMT4 == 0 THEN PAY_AMT3 == 0",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_013",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1715,
+      "violations": 26,
+      "violation_rate": 0.015160349854227406,
+      "confidence": 0.9848396501457726,
+      "base_rate": 0.1958641975308642,
+      "lift": 5.028175963555473,
+      "coverage": 0.10586419753086419,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 560,
+      "violations": 6,
+      "violation_rate": 0.010714285714285714,
+      "confidence": 0.9892857142857143,
+      "base_rate": 0.20222222222222222,
+      "lift": 4.892072213500785,
+      "coverage": 0.1037037037037037,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 595,
+      "violations": 9,
+      "violation_rate": 0.015126050420168067,
+      "confidence": 0.984873949579832,
+      "base_rate": 0.2064814814814815,
+      "lift": 4.7697931190413385,
+      "coverage": 0.11018518518518519,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 325,
+      "violations": 4,
+      "violation_rate": 0.012307692307692308,
+      "confidence": 0.9876923076923076,
+      "base_rate": 0.196,
+      "lift": 5.039246467817896,
+      "coverage": 0.10833333333333334,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0028183581124757596,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_013"
+  },
+  {
+    "description": "IF BILL_AMT4 == 0 THEN PAY_AMT3 <= 0",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT3",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_014",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT3\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1715,
+      "violations": 26,
+      "violation_rate": 0.015160349854227406,
+      "confidence": 0.9848396501457726,
+      "base_rate": 0.1958641975308642,
+      "lift": 5.028175963555473,
+      "coverage": 0.10586419753086419,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 560,
+      "violations": 6,
+      "violation_rate": 0.010714285714285714,
+      "confidence": 0.9892857142857143,
+      "base_rate": 0.20222222222222222,
+      "lift": 4.892072213500785,
+      "coverage": 0.1037037037037037,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 595,
+      "violations": 9,
+      "violation_rate": 0.015126050420168067,
+      "confidence": 0.984873949579832,
+      "base_rate": 0.2064814814814815,
+      "lift": 4.7697931190413385,
+      "coverage": 0.11018518518518519,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 325,
+      "violations": 4,
+      "violation_rate": 0.012307692307692308,
+      "confidence": 0.9876923076923076,
+      "base_rate": 0.196,
+      "lift": 5.039246467817896,
+      "coverage": 0.10833333333333334,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0028183581124757596,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_014"
+  },
+  {
+    "description": "IF BILL_AMT2 == 0 THEN PAY_AMT1 == 0",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT2",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT1",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_005",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT2\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT1\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1388,
+      "violations": 20,
+      "violation_rate": 0.01440922190201729,
+      "confidence": 0.9855907780979827,
+      "base_rate": 0.17425925925925925,
+      "lift": 5.655887568256224,
+      "coverage": 0.08567901234567901,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 426,
+      "violations": 10,
+      "violation_rate": 0.023474178403755867,
+      "confidence": 0.9765258215962441,
+      "base_rate": 0.17166666666666666,
+      "lift": 5.6884999316286065,
+      "coverage": 0.07888888888888888,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 444,
+      "violations": 7,
+      "violation_rate": 0.015765765765765764,
+      "confidence": 0.9842342342342343,
+      "base_rate": 0.18074074074074073,
+      "lift": 5.445558263181215,
+      "coverage": 0.08222222222222222,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 248,
+      "violations": 1,
+      "violation_rate": 0.004032258064516129,
+      "confidence": 0.9959677419354839,
+      "base_rate": 0.17433333333333334,
+      "lift": 5.713008079935854,
+      "coverage": 0.08266666666666667,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.011733507701249635,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_005"
+  },
+  {
+    "description": "IF BILL_AMT2 == 0 THEN PAY_AMT1 <= 0",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT2",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT1",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_006",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT2\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT1\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1388,
+      "violations": 20,
+      "violation_rate": 0.01440922190201729,
+      "confidence": 0.9855907780979827,
+      "base_rate": 0.17425925925925925,
+      "lift": 5.655887568256224,
+      "coverage": 0.08567901234567901,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 426,
+      "violations": 10,
+      "violation_rate": 0.023474178403755867,
+      "confidence": 0.9765258215962441,
+      "base_rate": 0.17166666666666666,
+      "lift": 5.6884999316286065,
+      "coverage": 0.07888888888888888,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 444,
+      "violations": 7,
+      "violation_rate": 0.015765765765765764,
+      "confidence": 0.9842342342342343,
+      "base_rate": 0.18074074074074073,
+      "lift": 5.445558263181215,
+      "coverage": 0.08222222222222222,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 248,
+      "violations": 1,
+      "violation_rate": 0.004032258064516129,
+      "confidence": 0.9959677419354839,
+      "base_rate": 0.17433333333333334,
+      "lift": 5.713008079935854,
+      "coverage": 0.08266666666666667,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.011733507701249635,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_006"
+  },
+  {
+    "description": "IF BILL_AMT3 == 0 THEN PAY_AMT2 == 0",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT2",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_010",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT2\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1567,
+      "violations": 35,
+      "violation_rate": 0.022335673261008295,
+      "confidence": 0.9776643267389917,
+      "base_rate": 0.18141975308641975,
+      "lift": 5.388962944257117,
+      "coverage": 0.0967283950617284,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 500,
+      "violations": 5,
+      "violation_rate": 0.01,
+      "confidence": 0.99,
+      "base_rate": 0.17555555555555555,
+      "lift": 5.639240506329114,
+      "coverage": 0.09259259259259259,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 510,
+      "violations": 11,
+      "violation_rate": 0.021568627450980392,
+      "confidence": 0.9784313725490196,
+      "base_rate": 0.17685185185185184,
+      "lift": 5.5324915306436715,
+      "coverage": 0.09444444444444444,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 293,
+      "violations": 5,
+      "violation_rate": 0.017064846416382253,
+      "confidence": 0.9829351535836177,
+      "base_rate": 0.18466666666666667,
+      "lift": 5.322753539261468,
+      "coverage": 0.09766666666666667,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.004503781034598139,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_010"
+  },
+  {
+    "description": "IF BILL_AMT3 == 0 THEN PAY_AMT2 <= 0",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_AMT2",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_011",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_AMT2\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1567,
+      "violations": 35,
+      "violation_rate": 0.022335673261008295,
+      "confidence": 0.9776643267389917,
+      "base_rate": 0.18141975308641975,
+      "lift": 5.388962944257117,
+      "coverage": 0.0967283950617284,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 500,
+      "violations": 5,
+      "violation_rate": 0.01,
+      "confidence": 0.99,
+      "base_rate": 0.17555555555555555,
+      "lift": 5.639240506329114,
+      "coverage": 0.09259259259259259,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 510,
+      "violations": 11,
+      "violation_rate": 0.021568627450980392,
+      "confidence": 0.9784313725490196,
+      "base_rate": 0.17685185185185184,
+      "lift": 5.5324915306436715,
+      "coverage": 0.09444444444444444,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 293,
+      "violations": 5,
+      "violation_rate": 0.017064846416382253,
+      "confidence": 0.9829351535836177,
+      "base_rate": 0.18466666666666667,
+      "lift": 5.322753539261468,
+      "coverage": 0.09766666666666667,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.004503781034598139,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_011"
+  },
+  {
+    "description": "IF PAY_0 == -2 THEN PAY_2 == -2",
+    "applicability": [
+      {
+        "left_column": "PAY_0",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_2",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_000",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_0\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_2\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1504,
+      "violations": 108,
+      "violation_rate": 0.07180851063829788,
+      "confidence": 0.9281914893617021,
+      "base_rate": 0.1271604938271605,
+      "lift": 7.299369964883289,
+      "coverage": 0.09283950617283951,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 488,
+      "violations": 35,
+      "violation_rate": 0.07172131147540983,
+      "confidence": 0.9282786885245902,
+      "base_rate": 0.11962962962962963,
+      "lift": 7.759605136273664,
+      "coverage": 0.09037037037037036,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 506,
+      "violations": 31,
+      "violation_rate": 0.06126482213438735,
+      "confidence": 0.9387351778656127,
+      "base_rate": 0.13296296296296295,
+      "lift": 7.060125293139706,
+      "coverage": 0.0937037037037037,
+      "exception_rate": 0.0
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 261,
+      "violations": 24,
+      "violation_rate": 0.09195402298850575,
+      "confidence": 0.9080459770114943,
+      "base_rate": 0.11933333333333333,
+      "lift": 7.609323829705259,
+      "coverage": 0.087,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.030689200854118394,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "score_only",
+    "role_rationale": "stable empirical edge used as a non-actuating branch reward",
+    "selection_weight": 10.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_000"
+  },
+  {
+    "description": "This candidate represents a 4-month delinquency chain with strong temporal autocorrelation and empirical support. The hardness prior is hard, justified by strong evidence and low violation rate. Directionality and rationale are sensible, expressing typical delinquency persistence. No exceptions listed but confidence is very high. No sensitive attributes involved and structure is not vacuous.",
+    "applicability": [
+      {
+        "left_column": "PAY_0",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      },
+      {
+        "left_column": "PAY_2",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      },
+      {
+        "left_column": "PAY_3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "temporal",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Severe delinquency commonly persists month to month, making it highly likely the intermediate status is also delinquent.",
+    "directionality_reason": "Delinquency is temporally autocorrelated and cumulative.",
+    "plausible_counterexample": "Only exceptional prompt recovery or corrections cause exceptions.",
+    "confidence": 0.94,
+    "candidate_id": "old::r2_013",
+    "source": "multi_role_critic",
+    "proposal_role": "conditional_structure",
+    "proposal_round": 2,
+    "critic_decision": "keep",
+    "critic_confidence": 0.9,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Strongly supported hard constraint with clear domain rationale; keep.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_0\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}, {\"left_column\": \"PAY_2\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}, {\"left_column\": \"PAY_3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1304,
+      "violations": 73,
+      "violation_rate": 0.05598159509202454,
+      "confidence": 0.9440184049079755,
+      "base_rate": 0.145,
+      "lift": 6.510471757986038,
+      "coverage": 0.08049382716049383,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 427,
+      "violations": 17,
+      "violation_rate": 0.03981264637002342,
+      "confidence": 0.9601873536299765,
+      "base_rate": 0.14351851851851852,
+      "lift": 6.690337689808869,
+      "coverage": 0.07907407407407407,
+      "exception_rate": 0.0
+    },
+    "judge_decision": "accept_soft",
+    "judge_confidence": 0.84,
+    "generalizability": "dataset_semantic",
+    "judge_issues": [
+      "unsupported_hardness",
+      "dataset_specific_codebook"
+    ],
+    "judge_rationale": "A persistence chain among repayment-status codes across adjacent months is semantically reasonable, especially if -2 is a specific codebook state repeated over time. However, this is not well justified as hard: even with strong empirical fit, month-to-month status transitions can change due to account activity, corrections, or codebook nuances. So the relation is acceptable only as a softer temporal persistence pattern, not a strict hard rule.",
+    "calibration": {
+      "support": 445,
+      "violations": 13,
+      "violation_rate": 0.029213483146067417,
+      "confidence": 0.9707865168539326,
+      "base_rate": 0.15037037037037038,
+      "lift": 6.455969447058172,
+      "coverage": 0.0824074074074074,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 225,
+      "violations": 13,
+      "violation_rate": 0.057777777777777775,
+      "confidence": 0.9422222222222222,
+      "base_rate": 0.13733333333333334,
+      "lift": 6.860841423948219,
+      "coverage": 0.075,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.028564294631710358,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "r2_013"
+  },
+  {
+    "description": "IF PAY_3 == -2 THEN PAY_2 == -2",
+    "applicability": [
+      {
+        "left_column": "PAY_3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_2",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_004",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_2\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 2221,
+      "violations": 388,
+      "violation_rate": 0.17469608284556506,
+      "confidence": 0.825303917154435,
+      "base_rate": 0.1271604938271605,
+      "lift": 6.490254105777596,
+      "coverage": 0.13709876543209876,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 712,
+      "violations": 129,
+      "violation_rate": 0.18117977528089887,
+      "confidence": 0.8188202247191011,
+      "base_rate": 0.11962962962962963,
+      "lift": 6.844627265453786,
+      "coverage": 0.13185185185185186,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 753,
+      "violations": 118,
+      "violation_rate": 0.15670650730411687,
+      "confidence": 0.8432934926958832,
+      "base_rate": 0.13296296296296295,
+      "lift": 6.342318747294944,
+      "coverage": 0.13944444444444445,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 399,
+      "violations": 73,
+      "violation_rate": 0.18295739348370926,
+      "confidence": 0.8170426065162907,
+      "base_rate": 0.11933333333333333,
+      "lift": 6.84672575292981,
+      "coverage": 0.133,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.026250886179592398,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_004"
+  },
+  {
+    "description": "IF PAY_2 == -2 THEN PAY_3 == -2",
+    "applicability": [
+      {
+        "left_column": "PAY_2",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_001",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_2\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 2060,
+      "violations": 227,
+      "violation_rate": 0.11019417475728155,
+      "confidence": 0.8898058252427185,
+      "base_rate": 0.13709876543209876,
+      "lift": 6.490254105777596,
+      "coverage": 0.1271604938271605,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 646,
+      "violations": 63,
+      "violation_rate": 0.09752321981424149,
+      "confidence": 0.9024767801857585,
+      "base_rate": 0.13185185185185186,
+      "lift": 6.844627265453786,
+      "coverage": 0.11962962962962963,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 718,
+      "violations": 83,
+      "violation_rate": 0.11559888579387187,
+      "confidence": 0.8844011142061281,
+      "base_rate": 0.13944444444444445,
+      "lift": 6.342318747294942,
+      "coverage": 0.13296296296296295,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 358,
+      "violations": 32,
+      "violation_rate": 0.0893854748603352,
+      "confidence": 0.9106145251396648,
+      "base_rate": 0.133,
+      "lift": 6.84672575292981,
+      "coverage": 0.11933333333333333,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.02621341093353667,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_001"
+  },
+  {
+    "description": "IF PAY_0 == -2 THEN PAY_3 == -2",
+    "applicability": [
+      {
+        "left_column": "PAY_0",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_007",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_0\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1504,
+      "violations": 200,
+      "violation_rate": 0.13297872340425532,
+      "confidence": 0.8670212765957447,
+      "base_rate": 0.13709876543209876,
+      "lift": 6.324063341220651,
+      "coverage": 0.09283950617283951,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 488,
+      "violations": 61,
+      "violation_rate": 0.125,
+      "confidence": 0.875,
+      "base_rate": 0.13185185185185186,
+      "lift": 6.636235955056179,
+      "coverage": 0.09037037037037036,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 506,
+      "violations": 61,
+      "violation_rate": 0.12055335968379446,
+      "confidence": 0.8794466403162056,
+      "base_rate": 0.13944444444444445,
+      "lift": 6.3067886556540635,
+      "coverage": 0.0937037037037037,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 261,
+      "violations": 36,
+      "violation_rate": 0.13793103448275862,
+      "confidence": 0.8620689655172413,
+      "base_rate": 0.133,
+      "lift": 6.481721545242416,
+      "coverage": 0.087,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.017377674798964154,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_007"
+  },
+  {
+    "description": "IF PAY_3 == -2 THEN PAY_4 == -2",
+    "applicability": [
+      {
+        "left_column": "PAY_3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_002",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 2221,
+      "violations": 246,
+      "violation_rate": 0.11076091850517784,
+      "confidence": 0.8892390814948221,
+      "base_rate": 0.145,
+      "lift": 6.132683320653946,
+      "coverage": 0.13709876543209876,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 712,
+      "violations": 69,
+      "violation_rate": 0.09691011235955056,
+      "confidence": 0.9030898876404494,
+      "base_rate": 0.14351851851851852,
+      "lift": 6.292497281623777,
+      "coverage": 0.13185185185185186,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 753,
+      "violations": 68,
+      "violation_rate": 0.0903054448871182,
+      "confidence": 0.9096945551128818,
+      "base_rate": 0.15037037037037038,
+      "lift": 6.049692854198967,
+      "coverage": 0.13944444444444445,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 399,
+      "violations": 50,
+      "violation_rate": 0.12531328320802004,
+      "confidence": 0.87468671679198,
+      "base_rate": 0.13733333333333334,
+      "lift": 6.369078034893058,
+      "coverage": 0.133,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.035007838320901846,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_002"
+  },
+  {
+    "description": "IF PAY_4 == -2 THEN PAY_3 == -2",
+    "applicability": [
+      {
+        "left_column": "PAY_4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_008",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 2349,
+      "violations": 374,
+      "violation_rate": 0.15921668795232014,
+      "confidence": 0.8407833120476799,
+      "base_rate": 0.13709876543209876,
+      "lift": 6.132683320653946,
+      "coverage": 0.145,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 775,
+      "violations": 132,
+      "violation_rate": 0.1703225806451613,
+      "confidence": 0.8296774193548387,
+      "base_rate": 0.13185185185185186,
+      "lift": 6.292497281623777,
+      "coverage": 0.14351851851851852,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 812,
+      "violations": 127,
+      "violation_rate": 0.1564039408866995,
+      "confidence": 0.8435960591133005,
+      "base_rate": 0.13944444444444445,
+      "lift": 6.049692854198967,
+      "coverage": 0.15037037037037038,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 412,
+      "violations": 63,
+      "violation_rate": 0.1529126213592233,
+      "confidence": 0.8470873786407767,
+      "base_rate": 0.133,
+      "lift": 6.369078034893057,
+      "coverage": 0.13733333333333334,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.003491319527476222,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_008"
+  },
+  {
+    "description": "IF BILL_AMT1 == 0 THEN PAY_2 == -2",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT1",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0.0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_2",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_018",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT1\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0.0, \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_2\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1106,
+      "violations": 232,
+      "violation_rate": 0.20976491862567812,
+      "confidence": 0.7902350813743219,
+      "base_rate": 0.1271604938271605,
+      "lift": 6.214470057409716,
+      "coverage": 0.0682716049382716,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 317,
+      "violations": 60,
+      "violation_rate": 0.1892744479495268,
+      "confidence": 0.8107255520504731,
+      "base_rate": 0.11962962962962963,
+      "lift": 6.776962818997763,
+      "coverage": 0.0587037037037037,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 385,
+      "violations": 76,
+      "violation_rate": 0.1974025974025974,
+      "confidence": 0.8025974025974026,
+      "base_rate": 0.13296296296296295,
+      "lift": 6.036247874687987,
+      "coverage": 0.0712962962962963,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 200,
+      "violations": 31,
+      "violation_rate": 0.155,
+      "confidence": 0.845,
+      "base_rate": 0.11933333333333333,
+      "lift": 7.081005586592179,
+      "coverage": 0.06666666666666667,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.042402597402597414,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_018"
+  },
+  {
+    "description": "IF PAY_0 == -2 THEN PAY_4 == -2",
+    "applicability": [
+      {
+        "left_column": "PAY_0",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "old::emp_019",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_0\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1504,
+      "violations": 264,
+      "violation_rate": 0.17553191489361702,
+      "confidence": 0.824468085106383,
+      "base_rate": 0.145,
+      "lift": 5.685986793837125,
+      "coverage": 0.09283950617283951,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 488,
+      "violations": 74,
+      "violation_rate": 0.15163934426229508,
+      "confidence": 0.8483606557377049,
+      "base_rate": 0.14351851851851852,
+      "lift": 5.911158117398202,
+      "coverage": 0.09037037037037036,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 506,
+      "violations": 67,
+      "violation_rate": 0.1324110671936759,
+      "confidence": 0.8675889328063241,
+      "base_rate": 0.15037037037037038,
+      "lift": 5.769680095017426,
+      "coverage": 0.0937037037037037,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 261,
+      "violations": 44,
+      "violation_rate": 0.1685823754789272,
+      "confidence": 0.8314176245210728,
+      "base_rate": 0.13733333333333334,
+      "lift": 6.054011829036938,
+      "coverage": 0.087,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.03617130828525131,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0,
+    "evaluation_origin": "old",
+    "original_candidate_id": "emp_019"
+  },
+  {
+    "description": "If the current statement balance exceeds the credit limit, the current status should not indicate a fully settled or credit-balance condition.",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT1",
+        "operator": ">",
+        "right_kind": "column",
+        "right_column": "LIMIT_BAL",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_0",
+        "operator": ">=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [
+      {
+        "all_of": [
+          {
+            "left_column": "PAY_AMT1",
+            "operator": ">",
+            "right_kind": "column",
+            "right_column": "LIMIT_BAL",
+            "right_value": 0,
+            "tolerance": 0
+          }
+        ],
+        "reason": "A very large payment may have just cured the over-limit condition while status still reflects the earlier cycle."
+      }
+    ],
+    "relation_family": "process",
+    "hardness_prior": "near_hard",
+    "evidence_basis": "external_domain",
+    "rationale": "Being over limit is typically an adverse account state and is incompatible with codes suggesting no balance carried or payment in advance.",
+    "directionality_reason": "Once BILL_AMT1 crosses LIMIT_BAL, status is the natural downstream field to constrain; the edge is directional from exposure state to repayment code.",
+    "plausible_counterexample": "Temporary authorization holds or delayed posting can make the statement appear over limit while repayment status remains current.",
+    "confidence": 0.8,
+    "candidate_id": "new::r1_007",
+    "source": "multi_role_critic",
+    "proposal_role": "stateful_process",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.85,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Sound directionality, clear semantics, plausible exceptions, high empirical confidence. No evidence of spurious correlation or vacuity. Keep as written.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT1\", \"operator\": \">\", \"right_column\": \"LIMIT_BAL\", \"right_kind\": \"column\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [{\"all_of\": [{\"left_column\": \"PAY_AMT1\", \"operator\": \">\", \"right_column\": \"LIMIT_BAL\", \"right_kind\": \"column\", \"right_value\": 0, \"tolerance\": 0}]}], \"requirements\": [{\"left_column\": \"PAY_0\", \"operator\": \">=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1141,
+      "violations": 26,
+      "violation_rate": 0.022787028921998246,
+      "confidence": 0.9772129710780018,
+      "base_rate": 0.7190123456790124,
+      "lift": 1.3591045785940614,
+      "coverage": 0.0704320987654321,
+      "exception_rate": 0.00018518518518518518
+    },
+    "counterexample": {
+      "support": 376,
+      "violations": 8,
+      "violation_rate": 0.02127659574468085,
+      "confidence": 0.9787234042553191,
+      "base_rate": 0.7205555555555555,
+      "lift": 1.3582899981955086,
+      "coverage": 0.06962962962962962,
+      "exception_rate": 0.00037037037037037035
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.91,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Semantically strong: if the statement balance exceeds the credit limit, statuses indicating fully settled/credit-balance conditions are generally inconsistent. Temporary posting or timing exceptions can occur, so near-hard is appropriate rather than hard. The direction from exposure state to repayment-status expectation is defensible.",
+    "calibration": {
+      "support": 374,
+      "violations": 7,
+      "violation_rate": 0.01871657754010695,
+      "confidence": 0.9812834224598931,
+      "base_rate": 0.7142592592592593,
+      "lift": 1.373847674691061,
+      "coverage": 0.06925925925925926,
+      "exception_rate": 0.00018518518518518518
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 217,
+      "violations": 2,
+      "violation_rate": 0.009216589861751152,
+      "confidence": 0.9907834101382489,
+      "base_rate": 0.7196666666666667,
+      "lift": 1.3767254425265154,
+      "coverage": 0.07233333333333333,
+      "exception_rate": 0.0003333333333333333
+    },
+    "heldout_shift": 0.009499987678355798,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0,
+    "evaluation_origin": "new",
+    "original_candidate_id": "r1_007"
+  },
+  {
+    "description": "If the repayment status for month 4 is 'no record,' the status for month 5 is usually 'no record' as well.",
+    "applicability": [
+      {
+        "left_column": "PAY_4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_5",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [
+      {
+        "all_of": [
+          {
+            "left_column": "PAY_5",
+            "operator": "!=",
+            "right_kind": "literal",
+            "right_column": "",
+            "right_value": "-2",
+            "tolerance": 0
+          }
+        ],
+        "reason": "Account was reactivated after a dormant period."
+      }
+    ],
+    "relation_family": "temporal",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "While empirical evidence suggests this is frequent, using the hard prior is unjustified unless all plausible state transitions are explicitly excepted (activity, admin update, correction).",
+    "directionality_reason": "Inactivity in prior month predicts inactivity unless new charge occurs.",
+    "plausible_counterexample": "Cardholder resumed account use after dormancy, or system performed a status update for technical reasons.",
+    "confidence": 0.84,
+    "candidate_id": "new::r1_019",
+    "source": "multi_role_critic",
+    "proposal_role": "actionable_structure",
+    "proposal_round": 1,
+    "critic_decision": "revise",
+    "critic_confidence": 0.75,
+    "critic_issues": [
+      "missing_exception"
+    ],
+    "critic_text": "Same as r1_014: hard logic is unjustified unless exceptions enumerate all activity or system-driven status changes. The exception for only reactivation misses manual repairs or administrative transitions\u2014revise.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [{\"all_of\": [{\"left_column\": \"PAY_5\", \"operator\": \"!=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}], \"requirements\": [{\"left_column\": \"PAY_5\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 2142,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.15382716049382716,
+      "lift": 6.500802568218298,
+      "coverage": 0.1322222222222222,
+      "exception_rate": 0.014876543209876544
+    },
+    "counterexample": {
+      "support": 683,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.145,
+      "lift": 6.8965517241379315,
+      "coverage": 0.12648148148148147,
+      "exception_rate": 0.015555555555555555
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.87,
+    "generalizability": "dataset_semantic",
+    "judge_issues": [
+      "dataset_specific_codebook"
+    ],
+    "judge_rationale": "As a dataset-semantic transition rule, repeated '-2' status across adjacent historical months is defensible if '-2' is a documented special status code in this dataset family. It is not domain-general, but it is a meaningful codebook-dependent temporal regularity rather than an arbitrary identifier correlation. Near-hard is more appropriate than hard because status reactivation, corrections, or administrative recoding can occur.",
+    "calibration": {
+      "support": 711,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.15351851851851853,
+      "lift": 6.513872135102533,
+      "coverage": 0.13166666666666665,
+      "exception_rate": 0.013888888888888888
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 374,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.14733333333333334,
+      "lift": 6.787330316742081,
+      "coverage": 0.12466666666666666,
+      "exception_rate": 0.012666666666666666
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0,
+    "evaluation_origin": "new",
+    "original_candidate_id": "r1_019"
+  },
+  {
+    "description": "If the status in month 5 is 'no record,' the status in month 4 should also be 'no record' except for rare reporting resets.",
+    "applicability": [
+      {
+        "left_column": "PAY_5",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [
+      {
+        "all_of": [
+          {
+            "left_column": "PAY_4",
+            "operator": "!=",
+            "right_kind": "literal",
+            "right_column": "",
+            "right_value": "-2",
+            "tolerance": 0
+          }
+        ],
+        "reason": "Status changed due to account reactivation or late data ingestion."
+      }
+    ],
+    "relation_family": "temporal",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Status history frequently preserves 'no record' across consecutive months, reflecting real-world inactivity. However, the universal requirement is too hard: empirical signal has nonzero exception rate: exceptions must reflect all plausible 'status change initiations' (e.g., account open, reauthorization, manual fix), and not just 'late data ingestion'.",
+    "directionality_reason": "Status for month 4 logically precedes and matches month 5 if account is inactive.",
+    "plausible_counterexample": "Customer started using the card after a period of inactivity, or account underwent administrative status change that is not late data ingestion.",
+    "confidence": 0.86,
+    "candidate_id": "new::r1_014",
+    "source": "multi_role_critic",
+    "proposal_role": "actionable_structure",
+    "proposal_round": 1,
+    "critic_decision": "revise",
+    "critic_confidence": 0.75,
+    "critic_issues": [
+      "missing_exception"
+    ],
+    "critic_text": "The constraint is logically correct only if 'no record' indicates true inactivity and transitions are always paired; but in real credit data, activity can resume after dormancy, which breaks a hard requirement across two months. 'Late data ingestion' as a single exception is too narrow: must broaden to cover administrative or activity-driven transitions, making the edge soft or enumerating all transition cases. Revise to document and encode all resumption/jump scenarios as exception groups.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_5\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [{\"all_of\": [{\"left_column\": \"PAY_4\", \"operator\": \"!=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}], \"requirements\": [{\"left_column\": \"PAY_4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 2142,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.14709876543209877,
+      "lift": 6.798153587914394,
+      "coverage": 0.1322222222222222,
+      "exception_rate": 0.021604938271604937
+    },
+    "counterexample": {
+      "support": 683,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.14203703703703704,
+      "lift": 7.0404172099087345,
+      "coverage": 0.12648148148148147,
+      "exception_rate": 0.018518518518518517
+    },
+    "judge_decision": "accept_near_hard",
+    "judge_confidence": 0.85,
+    "generalizability": "dataset_semantic",
+    "judge_issues": [
+      "dataset_specific_codebook"
+    ],
+    "judge_rationale": "Assuming the dataset codebook meaning of PAY_* = -2 as 'no record', consecutive historical months both being 'no record' is a plausible near-hard temporal dependency. It is not domain-universal outside this coding scheme, so dataset_semantic is appropriate. Account reactivation or administrative changes remain valid exceptions, preventing hard acceptance.",
+    "calibration": {
+      "support": 711,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.14555555555555555,
+      "lift": 6.870229007633588,
+      "coverage": 0.13166666666666665,
+      "exception_rate": 0.02185185185185185
+    },
+    "classification": "near_hard",
+    "heldout": {
+      "support": 374,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.13733333333333334,
+      "lift": 7.281553398058253,
+      "coverage": 0.12466666666666666,
+      "exception_rate": 0.02266666666666667
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "actuate",
+    "role_rationale": "semantically reviewed hard/near-hard executable edge",
+    "selection_weight": 100.0,
+    "evaluation_origin": "new",
+    "original_candidate_id": "r1_014"
+  },
+  {
+    "description": "If a bill is zero in month 3, the following month's bill should be zero or negative (not positive, as no debt was carried).",
+    "applicability": [
+      {
+        "left_column": "BILL_AMT3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "BILL_AMT4",
+        "operator": "<=",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": 0,
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [
+      {
+        "all_of": [
+          {
+            "left_column": "BILL_AMT4",
+            "operator": ">",
+            "right_kind": "literal",
+            "right_column": "",
+            "right_value": 0,
+            "tolerance": 0
+          }
+        ],
+        "reason": "Unexpected new charges or fees after a zero bill."
+      }
+    ],
+    "relation_family": "process",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "Process consistency: new positive bill after a true zero amounts to nonstandard account usage or correction.",
+    "directionality_reason": "If no debt remains, it\u2019s rare for a new statement to carry positive balance unless charged right after cutoff.",
+    "plausible_counterexample": "A large purchase was made just after last cycle's close, appearing fully in next bill.",
+    "confidence": 0.79,
+    "candidate_id": "new::r1_017",
+    "source": "multi_role_critic",
+    "proposal_role": "actionable_structure",
+    "proposal_round": 1,
+    "critic_decision": "keep",
+    "critic_confidence": 0.79,
+    "critic_issues": [
+      "none"
+    ],
+    "critic_text": "Marked as soft, as plausible business process exceptions (accumulated charges, posting delays) fit the exception case. The explicit process structure, directionality, and aggregate rates support coverage and low risk of spuriousness.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"BILL_AMT3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}], \"exceptions\": [{\"all_of\": [{\"left_column\": \"BILL_AMT4\", \"operator\": \">\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}], \"requirements\": [{\"left_column\": \"BILL_AMT4\", \"operator\": \"<=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": 0, \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1230,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.13067901234567902,
+      "lift": 7.652338214454416,
+      "coverage": 0.07592592592592592,
+      "exception_rate": 0.020493827160493826
+    },
+    "counterexample": {
+      "support": 382,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.12055555555555555,
+      "lift": 8.294930875576037,
+      "coverage": 0.07074074074074074,
+      "exception_rate": 0.020370370370370372
+    },
+    "judge_decision": "accept_soft",
+    "judge_confidence": 0.91,
+    "generalizability": "domain_general",
+    "judge_issues": [
+      "none"
+    ],
+    "judge_rationale": "Semantically defensible as a soft process expectation: a zero statement balance in one cycle often precedes a non-positive next statement unless new charges, fees, or timing effects occur. The stated exception captures the main reason the implication is not hard. Direction is sensible from prior bill state to subsequent bill state.",
+    "calibration": {
+      "support": 407,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.13240740740740742,
+      "lift": 7.552447552447552,
+      "coverage": 0.07537037037037037,
+      "exception_rate": 0.02148148148148148
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 230,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.129,
+      "lift": 7.751937984496124,
+      "coverage": 0.07666666666666666,
+      "exception_rate": 0.021
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0,
+    "evaluation_origin": "new",
+    "original_candidate_id": "r1_017"
+  },
+  {
+    "description": "If the repayment status for month 2 is 'no record,' month 3 should also be 'no record' unless new borrowing occurs.",
+    "applicability": [
+      {
+        "left_column": "PAY_2",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_3",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [
+      {
+        "all_of": [
+          {
+            "left_column": "PAY_3",
+            "operator": "!=",
+            "right_kind": "literal",
+            "right_column": "",
+            "right_value": "-2",
+            "tolerance": 0
+          }
+        ],
+        "reason": "Account resumed activity between periods."
+      }
+    ],
+    "relation_family": "temporal",
+    "hardness_prior": "hard",
+    "evidence_basis": "empirical_signal",
+    "rationale": "If no borrowing is present in one month, it's highly likely in the next unless usage starts. As with r1_014, the hard prior is unsupported because there are plausible, diverse ways an account can transit from dormant status to activity. Exception is too narrow.",
+    "directionality_reason": "No-record status temporally propagates until activity resumes.",
+    "plausible_counterexample": "Customer begins active borrowing after period of dormancy OR administrative status update.",
+    "confidence": 0.89,
+    "candidate_id": "new::r1_016",
+    "source": "multi_role_critic",
+    "proposal_role": "actionable_structure",
+    "proposal_round": 1,
+    "critic_decision": "revise",
+    "critic_confidence": 0.8,
+    "critic_issues": [
+      "missing_exception"
+    ],
+    "critic_text": "Constraint assumes a universal propagation, but real customer behavior and system updates may trigger status changes that are not strictly captured by the labeled exception. All cases where activity or administrative update occurs should be enumerated as exceptions or the edge should be softened to statistical (near-hard) rather than hard.",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_2\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [{\"all_of\": [{\"left_column\": \"PAY_3\", \"operator\": \"!=\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}], \"requirements\": [{\"left_column\": \"PAY_3\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 1823,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.1367283950617284,
+      "lift": 7.313769751693002,
+      "coverage": 0.11253086419753086,
+      "exception_rate": 0.01425925925925926
+    },
+    "counterexample": {
+      "support": 605,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.13537037037037036,
+      "lift": 7.387140902872777,
+      "coverage": 0.11203703703703703,
+      "exception_rate": 0.014814814814814815
+    },
+    "judge_decision": "accept_soft",
+    "judge_confidence": 0.77,
+    "generalizability": "dataset_semantic",
+    "judge_issues": [
+      "dataset_specific_codebook",
+      "unsupported_hardness",
+      "missing_exception"
+    ],
+    "judge_rationale": "Given the dataset codebook, persistence of PAY=-2 across adjacent historical months is plausible, but this is not a hard semantic law. Resumed usage, administrative recoding, account reopening, or timing effects can break persistence. Because it relies on the meaning of the PAY code and overclaims universality, it is acceptable only as a soft dataset-semantic edge.",
+    "calibration": {
+      "support": 623,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.13703703703703704,
+      "lift": 7.297297297297297,
+      "coverage": 0.11537037037037037,
+      "exception_rate": 0.011481481481481481
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 326,
+      "violations": 0,
+      "violation_rate": 0.0,
+      "confidence": 1.0,
+      "base_rate": 0.133,
+      "lift": 7.518796992481203,
+      "coverage": 0.10866666666666666,
+      "exception_rate": 0.010666666666666666
+    },
+    "heldout_shift": 0.0,
+    "provenance": [
+      "multi_role_critic"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0,
+    "evaluation_origin": "new",
+    "original_candidate_id": "r1_016"
+  },
+  {
+    "description": "IF PAY_4 == -2 THEN PAY_5 == -2",
+    "applicability": [
+      {
+        "left_column": "PAY_4",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "requirements": [
+      {
+        "left_column": "PAY_5",
+        "operator": "==",
+        "right_kind": "literal",
+        "right_column": "",
+        "right_value": "-2",
+        "tolerance": 0
+      }
+    ],
+    "exceptions": [],
+    "relation_family": "distributional",
+    "hardness_prior": "soft",
+    "evidence_basis": "empirical_signal",
+    "rationale": "train-only candidate mining",
+    "directionality_reason": "empirical directional implication",
+    "plausible_counterexample": "unknown",
+    "confidence": 0.5,
+    "candidate_id": "new::emp_004",
+    "source": "empirical_mining",
+    "canonical": "{\"applicability\": [{\"left_column\": \"PAY_4\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}], \"exceptions\": [], \"requirements\": [{\"left_column\": \"PAY_5\", \"operator\": \"==\", \"right_column\": \"\", \"right_kind\": \"literal\", \"right_value\": \"-2\", \"tolerance\": 0}]}",
+    "discovery": {
+      "support": 2383,
+      "violations": 241,
+      "violation_rate": 0.10113302559798573,
+      "confidence": 0.8988669744020142,
+      "base_rate": 0.15382716049382716,
+      "lift": 5.843356735679226,
+      "coverage": 0.14709876543209877,
+      "exception_rate": 0.0
+    },
+    "counterexample": {
+      "support": 767,
+      "violations": 84,
+      "violation_rate": 0.10951760104302477,
+      "confidence": 0.8904823989569752,
+      "base_rate": 0.145,
+      "lift": 6.141257923841209,
+      "coverage": 0.14203703703703704,
+      "exception_rate": 0.0
+    },
+    "calibration": {
+      "support": 786,
+      "violations": 75,
+      "violation_rate": 0.09541984732824428,
+      "confidence": 0.9045801526717557,
+      "base_rate": 0.15351851851851853,
+      "lift": 5.892319450455345,
+      "coverage": 0.14555555555555555,
+      "exception_rate": 0.0
+    },
+    "classification": "soft",
+    "heldout": {
+      "support": 412,
+      "violations": 38,
+      "violation_rate": 0.09223300970873786,
+      "confidence": 0.9077669902912622,
+      "base_rate": 0.14733333333333334,
+      "lift": 6.161314413741598,
+      "coverage": 0.13733333333333334,
+      "exception_rate": 0.0
+    },
+    "heldout_shift": 0.0031868376195064163,
+    "provenance": [
+      "empirical_mining"
+    ],
+    "usage_role": "monitor",
+    "role_rationale": "stable probabilistic relation retained for diagnostics only",
+    "selection_weight": 0.0,
+    "evaluation_origin": "new",
+    "original_candidate_id": "emp_004"
+  }
+]

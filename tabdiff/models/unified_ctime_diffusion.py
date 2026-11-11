@@ -594,4 +594,3 @@ class UnifiedCtimeDiffusion(torch.nn.Module):
         
         sample = torch.cat([z_norm, z_cat], dim=1).cpu()
         return sample
-    

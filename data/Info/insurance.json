@@ -1,0 +1,23 @@
+{
+  "name": "insurance",
+  "task_type": "regression",
+  "header": "infer",
+  "column_names": null,
+  "num_col_idx": [
+    0,
+    1,
+    2
+  ],
+  "cat_col_idx": [
+    3,
+    4,
+    5
+  ],
+  "target_col_idx": [
+    6
+  ],
+  "file_type": "csv",
+  "data_path": "data/insurance/insurance.csv",
+  "val_path": null,
+  "test_path": null
+}

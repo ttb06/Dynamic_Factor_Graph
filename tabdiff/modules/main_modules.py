@@ -163,5 +163,3 @@ class Model(nn.Module):
             return self.denoise_fn_D(x_num, x_cat, t, sigma)
         else:
             return self.denoise_fn_D(x_num, x_cat, t)
-
-
